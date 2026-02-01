@@ -1,12 +1,10 @@
 using UnityEngine;
 using UnityEngine.Events;
-
 public class LifeController : MonoBehaviour
 {
     [SerializeField] private int _currenthp;
     [SerializeField] private int _maxHP = 100;
     [SerializeField] private bool _fullHPOnStart = true;
-
     [SerializeField] private UnityEvent<int, int> _onHPChanged;
     [SerializeField] private UnityEvent _onDefeated;
 
@@ -22,6 +20,7 @@ public class LifeController : MonoBehaviour
     public void SetHp(int hp)
     {
         hp = Mathf.Clamp(hp, 0, _maxHP);
+
         if (hp != _currenthp)
         {
             _currenthp = hp;
@@ -30,7 +29,6 @@ public class LifeController : MonoBehaviour
 
             if (_currenthp <= 0)
             {
-                Defeated();
                 _onDefeated.Invoke();
             }
         }
@@ -42,10 +40,5 @@ public class LifeController : MonoBehaviour
     {
         Debug.Log($"Life Controller takedamage con damage ={damage}");
         AddHp(-damage);
-    }
-
-    public void Defeated()
-    {
-        Destroy(gameObject);
     }
 }

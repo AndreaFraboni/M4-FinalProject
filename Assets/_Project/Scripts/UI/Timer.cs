@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class Timer : MonoBehaviour
 {
-
     [SerializeField] private float _countDown = 600f; // Durata del timer in secondi = 10 minuti
     [SerializeField] private float _currentTime;
     [SerializeField] private TextMeshProUGUI _currentTimetext;
@@ -18,7 +17,6 @@ public class Timer : MonoBehaviour
 
     private void Update()
     {
-
         _currentTime -= Time.deltaTime;
         TimeManager();
 
@@ -30,7 +28,6 @@ public class Timer : MonoBehaviour
 
             Invoke("GameOver", 1);
         }
-
     }
 
     private void TimeManager()
@@ -39,18 +36,16 @@ public class Timer : MonoBehaviour
         _currentTimetext.text = $"{secondiTrascorsi} s";
     }
 
-
     public void GameOver()
     {
         Debug.Log("GAME OVER !!!");
         // STOP all music ancd sfx now not play ==> isPlaying = false;
         // game in PAUSE ==> isPaused = true;
-        Time.timeScale = 0; 
+        Time.timeScale = 0;
 
         // PLAY DEATH MUSIC
         // Show Game Over
     }
-
 
 }
 

@@ -1,8 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 
-public class UI_LifeController : MonoBehaviour
+public class EnemyController : MonoBehaviour
 {
     [SerializeField] private Image _bar_lifeBarFillable;
 
@@ -13,6 +12,12 @@ public class UI_LifeController : MonoBehaviour
         if (_lifeController == null) _lifeController = GetComponentInParent<LifeController>();
     }
 
+
+
+
+
+
+
     public void OnChangeLife(int hp, int maxhp)
     {
         _bar_lifeBarFillable.fillAmount = (float)hp / maxhp;
@@ -20,7 +25,7 @@ public class UI_LifeController : MonoBehaviour
 
     public void OnDefeated()
     {
-        _lifeController.Defeated();
+        Destroy(gameObject);
     }
 
 }
