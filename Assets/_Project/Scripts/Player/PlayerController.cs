@@ -13,6 +13,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float _smooth = 10f;
     [SerializeField] private float _jumpForce = 5f;
 
+    [Header("Audio Manager")]
+    [SerializeField] private AudioManager _audioManager;
+
     private Rigidbody _rb;
     private Mover _mover;
     private Rotator _rotator;
@@ -33,6 +36,8 @@ public class PlayerController : MonoBehaviour
         if (_rb == null) _rb = GetComponent<Rigidbody>();
         if (_mover == null) _mover = GetComponent<Mover>();
         if (_rotator == null) _rotator = GetComponent<Rotator>();
+
+        if (_audioManager == null) _audioManager = FindAnyObjectByType<AudioManager>();
 
         _cam = Camera.main;
     }
@@ -142,6 +147,7 @@ public class PlayerController : MonoBehaviour
 
     public void OnChangeLife(int hp, int maxhp)
     {
+        _audioManager.PlaySFX("GetDamage");
         _lifeText.text = hp + "/" + maxhp;
         _bar_lifeBarFillable.fillAmount = (float)hp / maxhp;
     }
