@@ -202,7 +202,7 @@ GameObject:
   - component: {fileID: 57943396}
   - component: {fileID: 57943395}
   - component: {fileID: 57943394}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -857,7 +857,7 @@ GameObject:
   - component: {fileID: 845691216}
   m_Layer: 3
   m_Name: Ground
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1328,7 +1328,7 @@ GameObject:
   - component: {fileID: 1881017128}
   - component: {fileID: 1881017133}
   - component: {fileID: 1881017134}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -2234,7 +2234,7 @@ GameObject:
   - component: {fileID: 2046044727614633457}
   - component: {fileID: 8280042554581939861}
   - component: {fileID: 7455384915149055114}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: LifeBarCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2721,9 +2721,9 @@ GameObject:
   - component: {fileID: 4502133527998659573}
   - component: {fileID: 4707910684962903845}
   - component: {fileID: 5112969403802433169}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3071,7 +3071,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.365537, y: 0.19700001}
   m_AnchorMax: {x: 0.66300005, y: 0.30188504}
-  m_AnchoredPosition: {x: -27.5, y: -5.499939}
+  m_AnchoredPosition: {x: -27.5, y: -5.5}
   m_SizeDelta: {x: 29, y: -13}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2075172875153199020
@@ -4128,7 +4128,7 @@ GameObject:
   - component: {fileID: 6521605863742599864}
   - component: {fileID: 5224807646041085200}
   - component: {fileID: 5057938367718610965}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Fillbar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4276,7 +4276,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.23956165, y: 0.22959027}
   m_AnchorMax: {x: 0.7594212, y: 0.33666593}
-  m_AnchoredPosition: {x: 0.5, y: -1.500061}
+  m_AnchoredPosition: {x: 0.5, y: -1.5000916}
   m_SizeDelta: {x: -5, y: -7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &3752372274629878182
@@ -4414,7 +4414,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.21770895, y: 0.3242013}
   m_AnchorMax: {x: 0.8441652, y: 0.8418141}
-  m_AnchoredPosition: {x: -9.879944, y: 2.5}
+  m_AnchoredPosition: {x: -9.880005, y: 2.5}
   m_SizeDelta: {x: -36.908, y: -45.744}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &3943212106568879177
@@ -6087,7 +6087,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7084597450416421899}
   - component: {fileID: 6217845870744205252}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: UI_EnemyLifeController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7557,7 +7557,7 @@ GameObject:
   - component: {fileID: 7113009057928533913}
   - component: {fileID: 1581043145917324446}
   - component: {fileID: 4195375057583653086}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
