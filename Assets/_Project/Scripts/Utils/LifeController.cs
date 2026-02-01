@@ -38,7 +38,7 @@ public class LifeController : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        Debug.Log($"Life Controller takedamage con damage ={damage}");
+        //        Debug.Log($"Life Controller takedamage con damage ={damage}");
         AddHp(-damage);
     }
 }

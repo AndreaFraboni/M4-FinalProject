@@ -30,6 +30,7 @@ public class CameraController : MonoBehaviour
 
     private void LateUpdate()
     {
+        if (_target == null) return;
 
         if (Input.GetMouseButton(1))
         {

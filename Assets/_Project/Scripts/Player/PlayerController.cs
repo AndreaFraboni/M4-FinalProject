@@ -16,6 +16,8 @@ public class PlayerController : MonoBehaviour
     [Header("Audio Manager")]
     [SerializeField] private AudioManager _audioManager;
 
+    [SerializeField] private PlayerAnimation _pa;
+
     private Rigidbody _rb;
     private Mover _mover;
     private Rotator _rotator;
@@ -26,10 +28,13 @@ public class PlayerController : MonoBehaviour
     private Camera _cam;
     private Ray _ray;
 
-    private bool isAlive = true;
+    public bool isAlive = true;
     public bool isGrounded = false;
-    private bool isJump = false;
-    private bool isRunning = false;
+    public bool isJump = false;
+    public bool isRunning = false;
+
+    // Getter
+    public Vector3 GetDirection() => currentDirection;
 
     private void Awake()
     {
@@ -38,6 +43,8 @@ public class PlayerController : MonoBehaviour
         if (_rotator == null) _rotator = GetComponent<Rotator>();
 
         if (_audioManager == null) _audioManager = FindAnyObjectByType<AudioManager>();
+
+        if (_pa == null) _pa = GetComponentInParent<PlayerAnimation>();
 
         _cam = Camera.main;
     }
@@ -95,6 +102,10 @@ public class PlayerController : MonoBehaviour
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
             isJump = true;
+            Debug.Log("attivo JUMP !!!");
+            _pa.SetBoolParam("isWalking", false);
+            _pa.SetBoolParam("isRunning", false);
+
         }
     }
 
@@ -132,11 +143,11 @@ public class PlayerController : MonoBehaviour
         if (!isAlive) return;
 
         isJump = false;
+
         if (isRunning) isRunning = false;
 
         _rb.AddForce(Vector3.up * _jumpForce, ForceMode.Impulse);
     }
-
 
 
 
@@ -154,6 +165,8 @@ public class PlayerController : MonoBehaviour
 
     public void OnDefeated()
     {
+        _audioManager.PlaySFX("DeathSound");
+
         Destroy(gameObject);
     }
 
