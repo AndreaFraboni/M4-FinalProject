@@ -1,14 +1,9 @@
 fileFormatVersion: 2
-guid: 6ba7875b45f0ffc42a35d24241896e83
+guid: e1fc6efecf566c544b34d666dd2c1c77
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: mage
-    second: {fileID: 2100000, guid: 28c797cc12142514092238fee43bbecd, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -24,7 +19,10 @@ ModelImporter:
     rigImportErrors: 
     rigImportWarnings: 
     animationImportErrors: 
-    animationImportWarnings: 
+    animationImportWarnings: "\nClip 'mixamo.com' has import animation warnings that
+      might lower retargeting quality:\nNote: Activate translation DOF on avatar
+      to improve retargeting quality.\n\t'chest' is inbetween humanoid transforms
+      and has rotation animation that will be discarded.\n"
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
@@ -36,7 +34,36 @@ ModelImporter:
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: RunningRightStrafe
+      takeName: mixamo.com
+      internalID: -203655887218126122
+      firstFrame: 0
+      lastFrame: 40
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     isReadable: 0
   meshes:
     lODScreenPercentages: []
@@ -82,21 +109,7 @@ ModelImporter:
     legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
-  referencedClips:
-  - 65b60d2cfbfe0db47a6480b7a4edabac
-  - ed6c9319202c08642aa4717ff60ac155
-  - 02727bec682181d449f7765edd003771
-  - df92d70b915253e4ca431e716b78c35a
-  - 3c4ea3ab6b14aae408f4e7af8602acb2
-  - b96cf109089886748ad761dcaecbb8e4
-  - 54802488d37abb84c80da0a18ae0ec3a
-  - ea5db96cf298c054aa3a06e7b04d405d
-  - 899d1eb87a3ac6144a11cb7019aef4b0
-  - e1fc6efecf566c544b34d666dd2c1c77
-  - 343efda165eeec245835fafc62aedd79
-  - 0ab69339c3638004dbcfffafaaae08c8
-  - afb1bec29da1f3d4b98dc6214773c39a
-  - db60b629d7e8c6242b575267f8a038bd
+  referencedClips: []
   importAnimation: 1
   humanDescription:
     serializedVersion: 3
@@ -417,11 +430,12 @@ ModelImporter:
     hasTranslationDoF: 0
     hasExtraRoot: 1
     skeletonHasParents: 1
-  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 6ba7875b45f0ffc42a35d24241896e83,
+    type: 3}
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 3
   humanoidOversampling: 1
-  avatarSetup: 1
+  avatarSetup: 2
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
   importBlendShapeDeformPercent: 1
   remapMaterialsIfMaterialImportModeIsNone: 0
