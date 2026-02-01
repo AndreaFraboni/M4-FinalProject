@@ -14,11 +14,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float _jumpForce = 5f;
 
     private Rigidbody _rb;
+    private Mover _mover;
+    private Rotator _rotator;
 
     private float horizontal, vertical = 0f;
-
     private Vector3 currentDirection = Vector3.zero;
-
 
     private Camera _cam;
     private Ray _ray;
@@ -31,6 +31,8 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         if (_rb == null) _rb = GetComponent<Rigidbody>();
+        if (_mover == null) _mover = GetComponent<Mover>();
+        if (_rotator == null) _rotator = GetComponent<Rotator>();
 
         _cam = Camera.main;
     }
@@ -41,15 +43,14 @@ public class PlayerController : MonoBehaviour
         CheckRun();
         CheckJump();
 
-
     }
 
     private void FixedUpdate()
     {
         Move();
+        Rotation();
 
         if (isJump) Jump();
-
     }
 
     private void CheckInput()
@@ -92,23 +93,33 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-
     private void Move()
     {
         if (!isAlive) return;
 
-        if (isRunning)
+        if (_mover != null)
         {
-            Vector3 current = _rb.velocity;
-            Vector3 desired = currentDirection * _speed * 2;
-            _rb.velocity = new Vector3(desired.x, current.y, desired.z);
+            if (isRunning)
+            {
+                _mover.SetSpeed(_speed * 2);
+                _mover.SetAndNormalizeInput(currentDirection);
+            }
+            else
+            {
+                _mover.SetSpeed(_speed);
+                _mover.SetAndNormalizeInput(currentDirection);
+            }
         }
-        else
-        {
-            Vector3 current = _rb.velocity;
-            Vector3 desired = currentDirection * _speed;
-            _rb.velocity = new Vector3(desired.x, current.y, desired.z);
-        }
+    }
+
+    private void Rotation()
+    {
+        if (!isAlive) return;
+
+        // se non stai davvero muovendo, non ruotare
+        if (currentDirection.sqrMagnitude < 0.0004f) return;
+
+        if (_rotator != null) _rotator.SetRotation(currentDirection);
     }
 
     private void Jump()

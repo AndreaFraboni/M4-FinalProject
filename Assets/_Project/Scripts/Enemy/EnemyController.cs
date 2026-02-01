@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class EnemyController : MonoBehaviour
+public class EnemyController : MonoBehaviour, IHitable
 {
     [SerializeField] private Image _bar_lifeBarFillable;
 
@@ -17,6 +17,11 @@ public class EnemyController : MonoBehaviour
 
 
 
+
+    public void GetHit()
+    {
+        _lifeController.TakeDamage(10);
+    }
 
     public void OnChangeLife(int hp, int maxhp)
     {

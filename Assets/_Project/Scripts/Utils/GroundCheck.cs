@@ -21,5 +21,4 @@ public class GroundCheck : MonoBehaviour
         bool grounded = Physics.Raycast(transform.position, Vector3.down, _probeDistance, _layerGroundMask);
         _playerController.isGrounded = grounded;
     }
-
 }
