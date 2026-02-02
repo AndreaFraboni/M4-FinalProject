@@ -6,13 +6,13 @@ public class PlayerAnimation : MonoBehaviour
     [SerializeField] private string _verticalSpeedParamName = "vSpeed";
     [SerializeField] private string _horizontalSpeedParamName = "hSpeed";
 
-    [SerializeField] private string _isWalkingParam = "isWalking";
-    [SerializeField] private string _isRunningParam = "isRunning";
+    //[SerializeField] private string _isWalkingParam = "isWalking";
+    //[SerializeField] private string _isRunningParam = "isRunning";
 
     private Animator _anim;
     private PlayerController _pc;
 
-    private bool isWalking = false;
+    //private bool isWalking = false;
 
     private void Awake()
     {

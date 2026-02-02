@@ -60,9 +60,9 @@ public class PlayerShootController : MonoBehaviour
     {
         _lastShootTime = Time.time;
 
-        Bullet clonedBullet = Instantiate(_bulletPrefab);
-        clonedBullet.transform.position = _firePoint.transform.position;
-        clonedBullet.Shoot(direction);
+        //Bullet clonedBullet = Instantiate(_bulletPrefab);
+        //clonedBullet.transform.position = _firePoint.transform.position;
+        //clonedBullet.Shoot(direction);
     }
     public void TryToShoot(Vector3 direction)
     {

@@ -2,33 +2,33 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    [SerializeField] private float _lifeSpan = 5f;
+    [Header("Explosion Damage")]
+    [SerializeField] private float _explosionRadius = 5f;
+    [SerializeField] private int _damage = 15;
+    [SerializeField] private LayerMask _damageLayers;
 
-    public float _speed = 10f;
-
-    private Mover _mover;
-
-    private void Awake()
-    {
-        if (_mover == null) _mover = GetComponent<Mover>();
-    }
-
-    private void Start()
-    {
-        Destroy(gameObject, _lifeSpan);
-    }
-
-    public void Shoot(Vector3 dir)
-    {
-        _mover.SetSpeed(_speed);
-        _mover.SetAndNormalizeInput(dir);
-    }
+    private bool _isExploded = false;
 
     private void OnTriggerEnter(Collider other)
     {
-
-
-
+        Explode();
     }
 
+    private void Explode()
+    {
+        if (_isExploded) return;
+
+        _isExploded = true;
+
+        Collider[] hits = Physics.OverlapSphere(transform.position, _explosionRadius, _damageLayers);
+        foreach (Collider hit in hits)
+        {
+            if (hit.TryGetComponent<LifeController>(out LifeController life))
+            {
+                life.TakeDamage(_damage);
+            }
+        }
+
+        Destroy(gameObject);
+    }
 }

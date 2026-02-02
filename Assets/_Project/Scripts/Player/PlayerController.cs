@@ -102,10 +102,8 @@ public class PlayerController : MonoBehaviour
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
             isJump = true;
-            Debug.Log("attivo JUMP !!!");
             _pa.SetBoolParam("isWalking", false);
             _pa.SetBoolParam("isRunning", false);
-
         }
     }
 

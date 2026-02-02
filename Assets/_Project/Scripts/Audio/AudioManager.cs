@@ -65,11 +65,9 @@ public class AudioManager : MonoBehaviour
                 musicSource.Play();
                 return;
             }
-            else
-            {
-                Debug.Log("Music Not Found in my list !!!");
-            }
         }
+
+        Debug.LogWarning($"Music Not Found in my list: {name}");
     }
 
     public void PlaySFX(string name)
@@ -78,16 +76,15 @@ public class AudioManager : MonoBehaviour
         {
             if (_sound.name == name)
             {
-                if (sfxSource.isPlaying) sfxSource.Stop();
+                // if (sfxSource.isPlaying) sfxSource.Stop();
                 sfxSource.PlayOneShot(_sound.clip);
                 return;
             }
-            else
-            {
-                Debug.Log("SFX sound Not Found in my list !!!");
-            }
         }
+
+        Debug.LogWarning($"SFX sound Not Found in my list: {name}");
     }
+
 
     // Stop All Audio Source !!!!!
     public void StopAllAudioSource()

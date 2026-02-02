@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Ground
   - Enemy
+  - Bullet
+  - Turret
   layers:
   - Default
   - TransparentFX
@@ -15,8 +17,8 @@ TagManager:
   - UI
   - Player
   - Enemy
-  - 
-  - 
+  - Bullet
+  - Turret
   - 
   - 
   - 
