@@ -3,7 +3,10 @@ using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
-    public GameObject PauseMenu;
+    public GameObject pauseMenu;
+
+    public GameObject gameOver;
+
     private bool isPaused = false;
     AudioManager _audioManager;
 
@@ -42,16 +45,24 @@ public class UIManager : MonoBehaviour
 
     public void Pause()
     {
-        PauseMenu.SetActive(true);
+        pauseMenu.SetActive(true);
         Time.timeScale = 0.0f;
         isPaused = true;
     }
 
     public void Resume()
     {
-        PauseMenu.SetActive(false);
+        pauseMenu.SetActive(false);
         Time.timeScale = 1.0f;
         isPaused = false;
+    }
+
+    public void Restart()
+    {
+        _audioManager.StopAllAudioSource();
+        gameOver.SetActive(false);
+        Time.timeScale = 1.0f;
+        SceneManager.LoadScene(1);
     }
 
     public void LoadMainMenu()

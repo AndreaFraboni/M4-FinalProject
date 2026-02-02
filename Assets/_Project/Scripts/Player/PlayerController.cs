@@ -1,12 +1,14 @@
-using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
+using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
     [Header("HUD")]
     [SerializeField] private Image _bar_lifeBarFillable;
     [SerializeField] private TextMeshProUGUI _lifeText;
+    [SerializeField] private TextMeshProUGUI _currentCoinstext;
 
     [Header("Player movement parameters")]
     [SerializeField] private float _speed = 6.0f;
@@ -17,6 +19,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private AudioManager _audioManager;
 
     [SerializeField] private PlayerAnimation _pa;
+
+    [Header("OnCoinPickup Event")]
+    [SerializeField] private UnityEvent<int> _onCoinPickup;
 
     private Rigidbody _rb;
     private Mover _mover;
@@ -32,6 +37,8 @@ public class PlayerController : MonoBehaviour
     public bool isGrounded = false;
     public bool isJump = false;
     public bool isRunning = false;
+
+    public int _currentCoins = 0;
 
     // Getter
     public Vector3 GetDirection() => currentDirection;
@@ -147,6 +154,17 @@ public class PlayerController : MonoBehaviour
         _rb.AddForce(Vector3.up * _jumpForce, ForceMode.Impulse);
     }
 
+    public void GetCoins(int coinValue)
+    {
+        Debug.Log("GET COIN !!");
+
+        _audioManager.PlaySFX("PickupCoin");
+
+        _currentCoins++;       
+
+        _onCoinPickup.Invoke(_currentCoins);
+
+    }
 
 
 

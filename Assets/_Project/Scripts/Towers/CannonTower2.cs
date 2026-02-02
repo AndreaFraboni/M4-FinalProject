@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class CannonTower1 : MonoBehaviour
+public class CannonTower2 : MonoBehaviour
 {
     [SerializeField] private Transform _cannonBaseAim;
     [SerializeField] private Transform _firePoint;

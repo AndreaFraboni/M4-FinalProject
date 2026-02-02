@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3365583174150751345}
   - component: {fileID: 7996074597144614199}
   m_Layer: 8
-  m_Name: Bullet
+  m_Name: Tower4Bullet
   m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -64,7 +64,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 24fb1d86dcce6484c9ad331caef0da10, type: 2}
+  - {fileID: 2100000, guid: 790466e8ebbb04a48b395443da00b8aa, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -146,8 +146,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d02d251556d29a249b8568d3a009f83c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _explosionRadius: 3
-  _damage: 15
+  _explosionRadius: 4
+  _damage: 20
   _damageLayers:
     serializedVersion: 2
     m_Bits: 64
