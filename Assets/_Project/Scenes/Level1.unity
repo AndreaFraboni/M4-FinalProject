@@ -888,7 +888,8 @@ MonoBehaviour:
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
-  m_fontSharedMaterials: []
+  m_fontSharedMaterials:
+  - {fileID: 2100000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
@@ -1462,7 +1463,8 @@ MonoBehaviour:
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
-  m_fontSharedMaterials: []
+  m_fontSharedMaterials:
+  - {fileID: 2100000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
@@ -1813,28 +1815,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 653874686}
   m_CullTransparentMesh: 1
---- !u!1 &837377562 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5054829381564010568, guid: 53ee2f48ad69f0f48b83596ba189a57a,
-    type: 3}
-  m_PrefabInstance: {fileID: 1305168000}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &837377563
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 837377562}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f694f6efc1fba2b42809ae2d6b1e2a38, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  coinSpeed: 100
-  coinValue: 20
-  _timer: {fileID: 1077592230}
-  addtime: 10
 --- !u!1 &845691215
 GameObject:
   m_ObjectHideFlags: 0
@@ -2293,7 +2273,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04f46ee59e2766140983a019340200ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _timeToWin: 600
   _countDown: 600
   _currentTime: 0
   _currentTimetext: {fileID: 496092700}
@@ -2877,19 +2856,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
       objectReference: {fileID: 0}
+    - target: {fileID: 2989962896695904763, guid: 53ee2f48ad69f0f48b83596ba189a57a,
+        type: 3}
+      propertyPath: _timer
+      value: 
+      objectReference: {fileID: 1077592230}
     - target: {fileID: 5054829381564010568, guid: 53ee2f48ad69f0f48b83596ba189a57a,
         type: 3}
       propertyPath: m_Name
-      value: COINTIME
+      value: coin_timer
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 5054829381564010568, guid: 53ee2f48ad69f0f48b83596ba189a57a,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 837377563}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53ee2f48ad69f0f48b83596ba189a57a, type: 3}
 --- !u!1 &1435377660
 GameObject:
@@ -7635,7 +7615,8 @@ MonoBehaviour:
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
-  m_fontSharedMaterials: []
+  m_fontSharedMaterials:
+  - {fileID: 2100000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
