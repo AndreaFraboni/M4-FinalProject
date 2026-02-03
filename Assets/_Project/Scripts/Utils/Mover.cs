@@ -7,19 +7,24 @@ public class Mover : MonoBehaviour
     private float _speed;
     private Rigidbody _rb;
 
+    private PlayerController _pc;
+
     private Vector3 currentDirection;
 
     private void Awake()
     {
-        _rb = GetComponentInParent<Rigidbody>();
+        if (_rb==null) _rb = GetComponentInParent<Rigidbody>();
+        if (_pc == null) _pc = GetComponentInParent<PlayerController>();
     }
 
     private void FixedUpdate()
     {
+        if (!_pc.isAlive) return;
+
         if (currentDirection.magnitude > 0.01f)
         {
             Vector3 velocity = currentDirection * _speed;
-            _rb.velocity = new Vector3(velocity.x, _rb.velocity.y, velocity.z);
+           _rb.velocity = new Vector3(velocity.x, _rb.velocity.y, velocity.z);
 
             Quaternion targetRotation = Quaternion.LookRotation(currentDirection);
             Quaternion rotation = Quaternion.Slerp(transform.rotation, targetRotation, _rotationSpeed * Time.deltaTime);

@@ -18,10 +18,12 @@ public class PlayerController : MonoBehaviour
     [Header("Audio Manager")]
     [SerializeField] private AudioManager _audioManager;
 
-    [SerializeField] private PlayerAnimation _pa;
+    [SerializeField] private PlayerAnimation _playerAnimation;
 
     [Header("OnCoinPickup Event")]
     [SerializeField] private UnityEvent<int> _onCoinPickup;
+
+    private CapsuleCollider _capsuleCollider;
 
     private Rigidbody _rb;
     private Mover _mover;
@@ -48,10 +50,11 @@ public class PlayerController : MonoBehaviour
         if (_rb == null) _rb = GetComponent<Rigidbody>();
         if (_mover == null) _mover = GetComponent<Mover>();
         if (_rotator == null) _rotator = GetComponent<Rotator>();
-
         if (_audioManager == null) _audioManager = FindAnyObjectByType<AudioManager>();
+        if (_playerAnimation == null) _playerAnimation = GetComponentInParent<PlayerAnimation>();
 
-        if (_pa == null) _pa = GetComponentInParent<PlayerAnimation>();
+        _capsuleCollider = GetComponent<CapsuleCollider>();
+        if (_capsuleCollider == null) Debug.LogError("Non trovo il COLLIDER !!!!!");
 
         _cam = Camera.main;
     }
@@ -109,8 +112,8 @@ public class PlayerController : MonoBehaviour
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
             isJump = true;
-            _pa.SetBoolParam("isWalking", false);
-            _pa.SetBoolParam("isRunning", false);
+            _playerAnimation.SetBoolParam("isWalking", false);
+            _playerAnimation.SetBoolParam("isRunning", false);
         }
     }
 
@@ -156,17 +159,15 @@ public class PlayerController : MonoBehaviour
 
     public void GetCoins(int coinValue)
     {
-        Debug.Log("GET COIN !!");
-
         _audioManager.PlaySFX("PickupCoin");
-
         _currentCoins++;       
-
         _onCoinPickup.Invoke(_currentCoins);
-
     }
 
-
+    public void DestroyGOPlayer()
+    {
+        Destroy(gameObject);
+    }
 
 
 
@@ -181,9 +182,20 @@ public class PlayerController : MonoBehaviour
 
     public void OnDefeated()
     {
+        isAlive = false;
+
         _audioManager.PlaySFX("DeathSound");
 
-        Destroy(gameObject);
+        if (_capsuleCollider != null) _capsuleCollider.enabled = false;
+
+        if (_rb != null) 
+        {
+            _rb.velocity = Vector3.zero;
+            _rb.angularVelocity = Vector3.zero;
+            _rb.isKinematic = true;
+        }
+
+        _playerAnimation.SetBoolParam("isDying", true);
     }
 
 }

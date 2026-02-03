@@ -18,7 +18,6 @@ public class Timer : MonoBehaviour
     {
         _currentTimetext.text = $"{(int)_currentTime} s";
         _currentTime = _countDown;
-
         if (_audioManager == null) _audioManager = FindAnyObjectByType<AudioManager>();
     }
 
@@ -31,9 +30,7 @@ public class Timer : MonoBehaviour
         if (_currentTime <= 0)
         {
             _currentTime = 0;
-
             Debug.Log("TEMPO SCADUTO !!!");
-
             Invoke("GameOver", 0.5f);
         }
     }
@@ -47,35 +44,22 @@ public class Timer : MonoBehaviour
     public void AddTime(float value)
     {
         _currentTime += value;
-        if (_currentTime > _countDown) _currentTime = _countDown;
+        if (_currentTime >= _countDown) _currentTime = _countDown;
     }
 
     public void GameOver()
     {
         Debug.Log("GAME OVER !!!");
-        
-        // STOP all music ancd sfx now not play ==> isPlaying = false;
-        _audioManager.StopAllAudioSource();
-
-        // game in PAUSE ==> isPaused = true;
-       
+        _audioManager.StopAllAudioSource();       
         gameOver.SetActive(true);
-
-        // PLAY DEATH MUSIC
-        
-        // Show Game Over
-
         Invoke("ShowGameOverMenu", 1f);
     }
 
     public void ShowGameOverMenu()
     {
         _audioManager.PlayMusic("GameOverMusic");
-
-        gameOver.SetActive(false);
-        
+        gameOver.SetActive(false);        
         Time.timeScale = 0;
-
         menuGameOver.SetActive(true);
     }
 

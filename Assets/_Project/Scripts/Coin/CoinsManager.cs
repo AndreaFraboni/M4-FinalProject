@@ -4,7 +4,6 @@ using UnityEngine;
 public class CoinsManager : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI _currentCoinstext;
-
     [SerializeField] private PlayerController _pc;
 
     public int _coinsToPickup = 100;
@@ -32,7 +31,6 @@ public class CoinsManager : MonoBehaviour
         
         } 
     }
-
 
     public void OnCoinPickup(int currentcoins)
     {

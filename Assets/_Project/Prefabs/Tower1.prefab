@@ -311,9 +311,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8881779599007575742}
-  - component: {fileID: 1957573684732430887}
+  - component: {fileID: 7171885822431430857}
   - component: {fileID: 7840934439862028014}
-  - component: {fileID: 3848729345331116618}
+  - component: {fileID: 3967461552622369251}
   m_Layer: 9
   m_Name: Tower1
   m_TagString: Turret
@@ -338,8 +338,8 @@ Transform:
   - {fileID: 5170109679077812777}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!136 &1957573684732430887
-CapsuleCollider:
+--- !u!135 &7171885822431430857
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -356,11 +356,9 @@ CapsuleCollider:
   m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 20
-  m_Height: 35
-  m_Direction: 1
-  m_Center: {x: -1.8040042, y: 0, z: -2.041668}
+  serializedVersion: 3
+  m_Radius: 15
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!65 &7840934439862028014
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -382,7 +380,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 3.7018328, y: 11.326949, z: 3.5983214}
   m_Center: {x: 0, y: 5.6, z: -0.08}
---- !u!114 &3848729345331116618
+--- !u!114 &3967461552622369251
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -391,14 +389,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 8527323271059275672}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5e106d939db90d745b37063891af80ad, type: 3}
+  m_Script: {fileID: 11500000, guid: fb825b7f713a7fd4aa67d95eba040575, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _cannonBaseAim: {fileID: 5063116427444876549}
   _firePoint: {fileID: 4501587913951689177}
   _projectilePrefab: {fileID: 1296096796299247977, guid: 407bafb4126afa84cb292a33d65b8b1a,
     type: 3}
-  target: {fileID: 0}
-  _fireRate: 4
+  _target: {fileID: 0}
+  _fireRate: 2
   _shootForce: 30
   _isActivated: 0

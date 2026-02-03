@@ -2,15 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class coin : MonoBehaviour
+public class Coin : MonoBehaviour
 {
-    [SerializeField] private float coinSpeed = 100f;
-    [SerializeField] private int coinValue = 10;
+    [Header("COIN parameters")]
+    [SerializeField] private float _coinRotSpeed = 100f;
+    [SerializeField] private int _coinValue = 10;
 
     // Update is called once per frame
     void Update()
     {
-        transform.Rotate(coinSpeed * Time.deltaTime, 0, 0);
+        transform.Rotate(_coinRotSpeed * Time.deltaTime, 0, 0);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -18,7 +19,7 @@ public class coin : MonoBehaviour
         if (other.CompareTag(Tags.Player))
         {
             Debug.Log("TRIGGER WITH PLAYER");
-            other.gameObject.GetComponent<PlayerController>().GetCoins(coinValue);
+            other.gameObject.GetComponent<PlayerController>().GetCoins(_coinValue);
             Destroy(gameObject);
         }
     }

@@ -13,10 +13,7 @@ public class UIManager : MonoBehaviour
     private void Awake()
     {
         if (_audioManager == null) _audioManager = FindAnyObjectByType<AudioManager>();
-
         _audioManager.UpdateSlider();
-
-
     }
     private void Start()
     {
@@ -83,9 +80,5 @@ public class UIManager : MonoBehaviour
 		     Application.Quit();
 #endif
         }
-    }
-    public void SaveOptions()
-    {
-        Debug.Log("le opzioni sono state salvate !!!");
     }
 }

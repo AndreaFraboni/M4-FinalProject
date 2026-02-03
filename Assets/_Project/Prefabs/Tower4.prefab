@@ -158,9 +158,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7861190850109985319}
-  - component: {fileID: 9181821102415226608}
+  - component: {fileID: 5700276221191421679}
   - component: {fileID: 1832864369071560462}
-  - component: {fileID: 6558972913935783979}
+  - component: {fileID: 1973923157446567370}
   m_Layer: 9
   m_Name: Tower4
   m_TagString: Turret
@@ -185,8 +185,8 @@ Transform:
   - {fileID: 771636301595460264}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!136 &9181821102415226608
-CapsuleCollider:
+--- !u!135 &5700276221191421679
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -203,11 +203,9 @@ CapsuleCollider:
   m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 25
-  m_Height: 23.913136
-  m_Direction: 1
-  m_Center: {x: 0.13868523, y: 0, z: 0.5194845}
+  serializedVersion: 3
+  m_Radius: 35
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!65 &1832864369071560462
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -229,7 +227,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 4.2843246, y: 10.378316, z: 4.0591354}
   m_Center: {x: 0.13556671, y: 5.1843486, z: 0.418293}
---- !u!114 &6558972913935783979
+--- !u!114 &1973923157446567370
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -238,14 +236,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 4735358426042953446}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1706505251263be43a3eae06e5dbdb09, type: 3}
+  m_Script: {fileID: 11500000, guid: fb825b7f713a7fd4aa67d95eba040575, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _cannonBaseAim: {fileID: 4471194361612238706}
   _firePoint: {fileID: 2358659978302630953}
   _projectilePrefab: {fileID: 1296096796299247977, guid: 1cbbda1b84857d9489aee50b15322419,
     type: 3}
-  target: {fileID: 0}
+  _target: {fileID: 0}
   _fireRate: 2
   _shootForce: 30
   _isActivated: 0

@@ -1,18 +1,25 @@
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class CoinTime : MonoBehaviour
 {
-
-    [SerializeField] private float coinSpeed = 100f;
-    [SerializeField] private int coinValue = 20;
-
+    [Header("COIN time parameters")]
+    [SerializeField] private float _coinRotSpeed = 100f;
+    [SerializeField] private int _coinValue = 20;
     [SerializeField] private Timer _timer;
     [SerializeField] private float addtime = 10;
 
-    // Update is called once per frame
+    private void Awake()
+    {
+        if (_timer == null)
+        {
+            _timer = FindAnyObjectByType<Timer>();
+        }
+    }
+
     void Update()
     {
-        transform.Rotate(coinSpeed * Time.deltaTime, 0, 0);
+        transform.Rotate(_coinRotSpeed * Time.deltaTime, 0, 0);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -21,7 +28,7 @@ public class CoinTime : MonoBehaviour
         {
             _timer.AddTime(addtime);
             Debug.Log("TRIGGER WITH PLAYER");
-            other.gameObject.GetComponent<PlayerController>().GetCoins(coinValue);
+            other.gameObject.GetComponent<PlayerController>().GetCoins(_coinValue);
             Destroy(gameObject);
         }
     }
