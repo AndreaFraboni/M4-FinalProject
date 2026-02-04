@@ -1,63 +1,104 @@
-using System.Collections;
 using System.Collections.Generic;
+using Unity.Burst.CompilerServices;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class BlockWayPoints : MonoBehaviour
 {
-    [SerializeField] private Transform[] _wayPoints;
+    [Header("Waypoints")][SerializeField] private List<Transform> _wayPoints = new List<Transform>();
+    [SerializeField] private int _wayPointIndex = 0;
+    [SerializeField] private bool _isLoop = true;
+    [SerializeField] private bool _isRandom = false;
+    [SerializeField] private bool _isActive = false;
+
+    [SerializeField] private float _impulseForce = 6.0f;
+
+    [Header("Block Parameters")]
+    [SerializeField] private float _moveSpeed = 5f;
+    [SerializeField] private float _arriveDistance = 0.01f;
+    [SerializeField] private int _damage = 10;
+
+    [Header("Player referments")]
+    [SerializeField] private PlayerController _Player;
 
     private Rigidbody _rb;
 
-
-    //private int _currentWayPoint = 0;
-
-    private Vector3 _currentDestination;
+    Vector3 direction;
 
     private void Awake()
     {
         if (_rb == null) _rb = GetComponent<Rigidbody>();
-    }
-
-    void Start()
-    {
-        if (_wayPoints != null && _wayPoints.Length > 0)
+        if (_Player == null)
         {
-            _currentDestination = _wayPoints[0].position;
+            _Player = FindFirstObjectByType<PlayerController>();
         }
     }
-
 
     private void Update()
     {
-
+        if (!_isActive) _rb.velocity = Vector3.zero;
     }
 
-
-    /*
-    private void Movement()
+    private void FixedUpdate()
     {
-        if (_wayPoints == null || _wayPoints.Length == 0)
+        if (_isActive)
         {
-            _rb.velocity = Vector2.zero;
-            return;
-        }
+            if (_wayPoints == null || _wayPoints.Count == 0) return;
+            if (_wayPoints[_wayPointIndex] == null) return;
 
-        MoveWayPoint(_currentDestination);
+            Vector3 targetPoint = _wayPoints[_wayPointIndex].position;
 
-        float distancePoint = Vector2.Distance(transform.position, _currentDestination);
+            direction = (targetPoint - _rb.position);
+            direction.y = 0f;
 
-        if (distancePoint < _stopDistance)
-        {
-            _currentWayPoint++;
-            if (_currentWayPoint >= _wayPoints.Length)
+            float distance = direction.magnitude;
+
+            if (distance < _arriveDistance)
             {
-                _currentWayPoint = 0;
+                _rb.velocity = Vector3.zero;
+                if (_isRandom)
+                {
+                    _wayPointIndex = Random.Range(0, _wayPoints.Count);
+                }
+                else
+                {
+                    _wayPointIndex++;
+                    if (_isLoop && _wayPointIndex >= _wayPoints.Count)
+                        _wayPointIndex = 0;
+                }
+                return;
             }
-            _currentDestination = _wayPoints[_currentWayPoint].position;
+            direction.Normalize();
+            _rb.velocity = direction * _moveSpeed;
         }
     }
-    */
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (!collision.gameObject.CompareTag(Tags.Player)) return;
+
+        if (collision.collider.attachedRigidbody != null)
+        {
+            if (collision.gameObject.TryGetComponent<LifeController>(out LifeController life))
+            {
+                life.TakeDamage(_damage);
+            }
 
 
+            _Player.PlayerHitByObject();
+            collision.collider.attachedRigidbody.AddForce(direction * _impulseForce, ForceMode.Impulse);
+        }
+    }
 
+    private void OnDrawGizmos()
+    {
+        if (_wayPoints == null || _wayPoints.Count == 0) return;
+        float radiusWayPoint = 0.1f;
+        Gizmos.color = Color.blue;
+        for (int i = 0; i < _wayPoints.Count; i++)
+        {
+            if (_wayPoints[i] == null) continue;
+            Gizmos.DrawWireSphere(_wayPoints[i].position, radiusWayPoint);
+        }
+    }
 }

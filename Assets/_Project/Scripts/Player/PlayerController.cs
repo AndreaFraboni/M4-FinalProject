@@ -149,11 +149,8 @@ public class PlayerController : MonoBehaviour
     private void Jump()
     {
         if (!isAlive) return;
-
         isJump = false;
-
         if (isRunning) isRunning = false;
-
         _rb.AddForce(Vector3.up * _jumpForce, ForceMode.Impulse);
     }
 
@@ -162,6 +159,11 @@ public class PlayerController : MonoBehaviour
         _audioManager.PlaySFX("PickupCoin");
         _currentCoins++;
         _onCoinPickup.Invoke(_currentCoins);
+    }
+
+    public void PlayerHitByObject()
+    {
+        _audioManager.PlaySFX("GetDamage");
     }
 
     public void DestroyGOPlayer()
