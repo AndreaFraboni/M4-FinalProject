@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 0ab69339c3638004dbcfffafaaae08c8
+guid: fce504feaaf60aa4f897fa0172a85fa3
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -36,7 +36,7 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: MageWalking
+      name: Mage@Walking
       takeName: mixamo.com
       internalID: -203655887218126122
       firstFrame: 0
@@ -50,7 +50,7 @@ ModelImporter:
       loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
-      loopBlendPositionY: 0
+      loopBlendPositionY: 1
       loopBlendPositionXZ: 1
       keepOriginalOrientation: 0
       keepOriginalPositionY: 1
