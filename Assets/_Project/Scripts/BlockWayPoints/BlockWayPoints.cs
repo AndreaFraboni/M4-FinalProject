@@ -9,8 +9,8 @@ public class BlockWayPoints : MonoBehaviour
     private Rigidbody _rb;
 
 
-    private int _currentWayPoint = 0;
-    
+    //private int _currentWayPoint = 0;
+
     private Vector3 _currentDestination;
 
     private void Awake()
@@ -29,7 +29,7 @@ public class BlockWayPoints : MonoBehaviour
 
     private void Update()
     {
-        
+
     }
 
 

@@ -160,7 +160,7 @@ public class PlayerController : MonoBehaviour
     public void GetCoins(int coinValue)
     {
         _audioManager.PlaySFX("PickupCoin");
-        _currentCoins++;       
+        _currentCoins++;
         _onCoinPickup.Invoke(_currentCoins);
     }
 
@@ -188,7 +188,7 @@ public class PlayerController : MonoBehaviour
 
         if (_capsuleCollider != null) _capsuleCollider.enabled = false;
 
-        if (_rb != null) 
+        if (_rb != null)
         {
             _rb.velocity = Vector3.zero;
             _rb.angularVelocity = Vector3.zero;

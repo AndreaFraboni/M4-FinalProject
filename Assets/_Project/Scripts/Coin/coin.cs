@@ -18,7 +18,7 @@ public class Coin : MonoBehaviour
     {
         if (other.CompareTag(Tags.Player))
         {
-            Debug.Log("TRIGGER WITH PLAYER");
+            //Debug.Log("TRIGGER WITH PLAYER");
             other.gameObject.GetComponent<PlayerController>().GetCoins(_coinValue);
             Destroy(gameObject);
         }

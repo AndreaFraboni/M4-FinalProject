@@ -43,6 +43,7 @@ public class Timer : MonoBehaviour
 
     public void AddTime(float value)
     {
+        _audioManager.PlaySFX("PickupCoinTimer");
         _currentTime += value;
         if (_currentTime >= _countDown) _currentTime = _countDown;
     }
@@ -50,7 +51,7 @@ public class Timer : MonoBehaviour
     public void GameOver()
     {
         Debug.Log("GAME OVER !!!");
-        _audioManager.StopAllAudioSource();       
+        _audioManager.StopAllAudioSource();
         gameOver.SetActive(true);
         Invoke("ShowGameOverMenu", 1f);
     }
@@ -58,7 +59,7 @@ public class Timer : MonoBehaviour
     public void ShowGameOverMenu()
     {
         _audioManager.PlayMusic("GameOverMusic");
-        gameOver.SetActive(false);        
+        gameOver.SetActive(false);
         Time.timeScale = 0;
         menuGameOver.SetActive(true);
     }
