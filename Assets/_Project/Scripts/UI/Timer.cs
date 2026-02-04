@@ -30,7 +30,6 @@ public class Timer : MonoBehaviour
         if (_currentTime <= 0)
         {
             _currentTime = 0;
-            Debug.Log("TEMPO SCADUTO !!!");
             Invoke("GameOver", 0.5f);
         }
     }
@@ -50,7 +49,6 @@ public class Timer : MonoBehaviour
 
     public void GameOver()
     {
-        Debug.Log("GAME OVER !!!");
         _audioManager.StopAllAudioSource();
         gameOver.SetActive(true);
         Invoke("ShowGameOverMenu", 1f);
