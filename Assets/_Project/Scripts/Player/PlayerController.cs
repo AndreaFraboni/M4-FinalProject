@@ -18,10 +18,16 @@ public class PlayerController : MonoBehaviour
     [Header("Audio Manager")]
     [SerializeField] private AudioManager _audioManager;
 
+    [Header("UI Manager")]
+    [SerializeField] private UIManager _UIManager;
+
+    [Header("Player Animation")]
     [SerializeField] private PlayerAnimation _playerAnimation;
 
     [Header("OnCoinPickup Event")]
     [SerializeField] private UnityEvent<int> _onCoinPickup;
+
+    private Shooter _shooter;
 
     private CapsuleCollider _capsuleCollider;
 
@@ -51,7 +57,9 @@ public class PlayerController : MonoBehaviour
         if (_mover == null) _mover = GetComponent<Mover>();
         if (_rotator == null) _rotator = GetComponent<Rotator>();
         if (_audioManager == null) _audioManager = FindAnyObjectByType<AudioManager>();
+        if (_UIManager == null) _UIManager = FindAnyObjectByType<UIManager>();
         if (_playerAnimation == null) _playerAnimation = GetComponentInParent<PlayerAnimation>();
+        if (_shooter == null) _shooter = GetComponent<Shooter>();
 
         _capsuleCollider = GetComponent<CapsuleCollider>();
         if (_capsuleCollider == null) Debug.LogError("Non trovo il COLLIDER !!!!!");
@@ -65,6 +73,7 @@ public class PlayerController : MonoBehaviour
         CheckRun();
         CheckJump();
 
+        CheckFire();
     }
 
     private void FixedUpdate()
@@ -168,8 +177,37 @@ public class PlayerController : MonoBehaviour
 
     public void DestroyGOPlayer()
     {
+        _UIManager.GameOver();
+
         Destroy(gameObject);
     }
+
+    private void CheckFire()
+    {
+        if (_shooter != null)
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                Vector3 mouseScreenPosition = Input.mousePosition;
+                mouseScreenPosition.z = -_cam.transform.position.z; // distanza tra camera e piano XY
+                Vector3 mouseWorldPosition = _cam.ScreenToWorldPoint(mouseScreenPosition);
+                Vector3 shootDirection = mouseWorldPosition - transform.position;
+
+                if (shootDirection != Vector3.zero) shootDirection.Normalize();
+
+                _shooter.TryToShoot(shootDirection);
+            }
+        }
+    }
+
+
+
+
+
+
+
+
+
 
 
 

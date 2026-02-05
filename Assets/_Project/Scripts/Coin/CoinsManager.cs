@@ -25,11 +25,13 @@ public class CoinsManager : MonoBehaviour
 
     private void Update()
     {
-        if (_currentCoins >= _coinsToPickup) 
-        { 
-          /// TO DO ==>  YOU WIN !!!!!!!!!!!
-        
-        } 
+        if (_currentCoins >= _coinsToPickup)
+        {
+            /// TO DO ==>  YOU WIN !!!!!!!!!!!
+            /// 
+            // use unity event ....
+
+        }
     }
 
     public void OnCoinPickup(int currentcoins)

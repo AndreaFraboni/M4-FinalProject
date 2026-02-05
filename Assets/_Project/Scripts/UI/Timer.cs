@@ -8,6 +8,7 @@ public class Timer : MonoBehaviour
     [SerializeField] private float _countDown = 600f; // Durata del timer in secondi = 10 minuti
     [SerializeField] private float _currentTime;
     [SerializeField] private TextMeshProUGUI _currentTimetext;
+    [SerializeField] private UIManager _UIManager;
 
     public GameObject gameOver;
     public GameObject menuGameOver;
@@ -49,19 +50,8 @@ public class Timer : MonoBehaviour
 
     public void GameOver()
     {
-        _audioManager.StopAllAudioSource();
-        gameOver.SetActive(true);
-        Invoke("ShowGameOverMenu", 1f);
+        _UIManager.GameOver();
     }
-
-    public void ShowGameOverMenu()
-    {
-        _audioManager.PlayMusic("GameOverMusic");
-        gameOver.SetActive(false);
-        Time.timeScale = 0;
-        menuGameOver.SetActive(true);
-    }
-
 }
 
 

@@ -6,6 +6,8 @@ public class UIManager : MonoBehaviour
     public GameObject pauseMenu;
 
     public GameObject gameOver;
+    public GameObject menuGameOver;
+
 
     private bool isPaused = false;
     AudioManager _audioManager;
@@ -69,6 +71,22 @@ public class UIManager : MonoBehaviour
         Time.timeScale = 1.0f;
         SceneManager.LoadScene(0);
     }
+
+    public void GameOver()
+    {
+        _audioManager.StopAllAudioSource();
+        gameOver.SetActive(true);
+        Invoke("ShowGameOverMenu", 1f);
+    }
+
+    public void ShowGameOverMenu()
+    {
+        _audioManager.PlayMusic("GameOverMusic");
+        gameOver.SetActive(false);
+        Time.timeScale = 0;
+        menuGameOver.SetActive(true);
+    }
+
 
     public void QuitGame()
     {
