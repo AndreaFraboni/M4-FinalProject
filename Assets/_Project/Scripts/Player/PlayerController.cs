@@ -104,14 +104,7 @@ public class PlayerController : MonoBehaviour
     {
         if (!isAlive) return;
 
-        if (Input.GetKeyDown(KeyCode.LeftShift))
-        {
-            isRunning = true;
-        }
-        if (Input.GetKeyUp(KeyCode.LeftShift))
-        {
-            isRunning = false;
-        }
+        isRunning = (Input.GetKey("left shift"));
     }
 
     private void CheckJump()
@@ -159,7 +152,6 @@ public class PlayerController : MonoBehaviour
     {
         if (!isAlive) return;
         isJump = false;
-        if (isRunning) isRunning = false;
         _rb.AddForce(Vector3.up * _jumpForce, ForceMode.Impulse);
     }
 
