@@ -1,10 +1,22 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class CoinsManager : MonoBehaviour
 {
+    [Header("Coin Manager referements")]
     [SerializeField] private TextMeshProUGUI _currentCoinstext;
     [SerializeField] private PlayerController _pc;
+
+    [Header("Audio Manager")]
+    [SerializeField] private AudioManager _audioManager;
+
+    [Header("UI Manager")]
+    [SerializeField] private UIManager _UIManager;
+
+    public GameObject Door;
+
+    public bool levelcompleted = false;
 
     public int _coinsToPickup = 100;
     public int _currentCoins = 0;
@@ -12,6 +24,10 @@ public class CoinsManager : MonoBehaviour
     private void Awake()
     {
         if (_pc == null) _pc = GetComponent<PlayerController>();
+
+        if (_audioManager == null) _audioManager = FindAnyObjectByType<AudioManager>();
+        if (_UIManager == null) _UIManager = FindAnyObjectByType<UIManager>();
+
     }
 
     private void OnEnable()
@@ -25,12 +41,11 @@ public class CoinsManager : MonoBehaviour
 
     private void Update()
     {
-        if (_currentCoins >= _coinsToPickup)
+        if (_currentCoins >= _coinsToPickup && !levelcompleted)
         {
-            /// TO DO ==>  YOU WIN !!!!!!!!!!!
-            /// 
-            // use unity event ....
-
+            levelcompleted = true;
+            _audioManager.PlaySFX("WinSound");
+            Door.SetActive(false);
         }
     }
 

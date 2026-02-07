@@ -82,7 +82,7 @@ public class BlockWayPoints : MonoBehaviour
             if (collision.gameObject.TryGetComponent<LifeController>(out LifeController life))
             {
                 _Player.PlayerHitByObject();
-                collision.collider.attachedRigidbody.AddForce(direction * _impulseForce, ForceMode.Impulse);
+                //collision.collider.attachedRigidbody.AddForce(direction * _impulseForce, ForceMode.Impulse);
                 life.TakeDamage(_damage);
             }
         }

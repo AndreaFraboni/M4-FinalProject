@@ -8,6 +8,8 @@ public class UIManager : MonoBehaviour
     public GameObject gameOver;
     public GameObject menuGameOver;
 
+    public GameObject WinnerBanner;
+    public GameObject menuWinner;
 
     private bool isPaused = false;
     AudioManager _audioManager;
@@ -86,7 +88,20 @@ public class UIManager : MonoBehaviour
         Time.timeScale = 0;
         menuGameOver.SetActive(true);
     }
+    public void Winner()
+    {
+        _audioManager.StopAllAudioSource();
+        WinnerBanner.SetActive(true);
+        Invoke("ShowWinnerMenu", 1f);
+    }
 
+    public void ShowWinnerMenu()
+    {
+        WinnerBanner.SetActive(false);
+        _audioManager.PlayMusic("WinnerMusic");
+        Time.timeScale = 0;
+        menuWinner.SetActive(true);
+    }
 
     public void QuitGame()
     {
