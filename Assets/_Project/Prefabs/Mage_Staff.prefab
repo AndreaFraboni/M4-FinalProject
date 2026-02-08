@@ -41,6 +41,21 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 1cdc39e61ca338c45b0ac727794c15f5,
         type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 1cdc39e61ca338c45b0ac727794c15f5,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 1cdc39e61ca338c45b0ac727794c15f5,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 1cdc39e61ca338c45b0ac727794c15f5,
+        type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.136
       objectReference: {fileID: 0}
@@ -89,10 +104,15 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 1cdc39e61ca338c45b0ac727794c15f5,
+        type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 1cdc39e61ca338c45b0ac727794c15f5,
         type: 3}
       propertyPath: m_Name
-      value: MageStaff
+      value: Mage_Staff
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
