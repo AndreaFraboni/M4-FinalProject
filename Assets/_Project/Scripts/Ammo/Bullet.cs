@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
+    [Header("Audio Manager")]
+    [SerializeField] private AudioManager _audioManager;
+
     [Header("Explosion Damage")]
     [SerializeField] private float _explosionRadius = 5f;
     [SerializeField] private int _damage = 15;
@@ -9,8 +12,14 @@ public class Bullet : MonoBehaviour
 
     private bool _isExploded = false;
 
+    private void Awake()
+    {
+        if (_audioManager == null) _audioManager = FindAnyObjectByType<AudioManager>();
+    }
+
     private void OnTriggerEnter(Collider other)
     {
+        _audioManager.PlaySFX("MagicSpellExplode");
         Explode();
     }
 

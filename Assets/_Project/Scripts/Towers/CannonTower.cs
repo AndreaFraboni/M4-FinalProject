@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class CannonTower : MonoBehaviour
 {
+    [Header("Audio Manager")]
+    [SerializeField] private AudioManager _audioManager;
+
     [SerializeField] private Transform _cannonBaseAim;
     [SerializeField] private Transform _firePoint;
     [SerializeField] private GameObject _projectilePrefab;
@@ -14,6 +17,8 @@ public class CannonTower : MonoBehaviour
 
     private void Awake()
     {
+        if (_audioManager == null) _audioManager = FindAnyObjectByType<AudioManager>();
+
         if (_target == null)
         {
             GameObject go = GameObject.FindGameObjectWithTag(Tags.Player);
@@ -35,7 +40,7 @@ public class CannonTower : MonoBehaviour
 
                 if (CanShoot())
                 {
-                    Shoot();
+                    if (_target != null) Shoot();
                 }
             }
         }
@@ -56,6 +61,8 @@ public class CannonTower : MonoBehaviour
     public void Shoot()
     {
         _lastShoot = Time.time;
+
+        _audioManager.PlaySFX("ShootFireBall");
 
         Vector3 dir = (_target.position - _firePoint.position).normalized;
         Quaternion rotationdesired = Quaternion.LookRotation(dir);

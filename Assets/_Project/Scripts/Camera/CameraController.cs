@@ -28,6 +28,12 @@ public class CameraController : MonoBehaviour
         _pitch = Mathf.Clamp(_pitch, bottomClamp, topClamp);
     }
 
+    public void SetCameraSettings(float minClamp, float maxClamp)
+    {
+        bottomClamp = minClamp;
+        maxClamp = maxClamp;
+    }
+
     private void LateUpdate()
     {
         if (_target == null) return;
