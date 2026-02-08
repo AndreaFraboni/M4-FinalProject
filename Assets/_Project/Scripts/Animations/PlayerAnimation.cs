@@ -49,18 +49,17 @@ public class PlayerAnimation : MonoBehaviour
         Vector3 dir = _pc.GetDirection();
         bool moving = dir.magnitude > 0.01f;
 
+        if (!_pc.isGrounded)
+        {
+            _anim.SetBool("isWalking", false);
+            _anim.SetBool("isRunning", false);
+            return;
+        }
+
         if (moving)
         {
-            if (_pc.isRunning && _pc.isGrounded)
-            {
-                _anim.SetBool("isRunning", true);
-                _anim.SetBool("isWalking", false);
-            }
-            else
-            {
-                _anim.SetBool("isWalking", true);
-                _anim.SetBool("isRunning", false);
-            }
+            _anim.SetBool("isRunning", _pc.isRunning);
+            _anim.SetBool("isWalking", !_pc.isRunning);
 
             _anim.SetFloat("hSpeed", dir.x);
             _anim.SetFloat("vSpeed", dir.z);
