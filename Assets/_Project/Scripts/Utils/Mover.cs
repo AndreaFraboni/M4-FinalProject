@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Mover : MonoBehaviour
 {
-    [SerializeField] private float _rotationSpeed = 0.2f;
+    //[SerializeField] private float _rotationSpeed = 0.2f;
 
     private float _speed;
     private Rigidbody _rb;

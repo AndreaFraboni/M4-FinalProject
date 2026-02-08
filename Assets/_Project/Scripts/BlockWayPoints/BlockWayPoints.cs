@@ -11,7 +11,7 @@ public class BlockWayPoints : MonoBehaviour
     [SerializeField] private bool _isRandom = false;
     [SerializeField] private bool _isActive = false;
 
-    [SerializeField] private float _impulseForce = 6.0f;
+    //    [SerializeField] private float _impulseForce = 6.0f;
 
     [Header("Block Parameters")]
     [SerializeField] private float _moveSpeed = 5f;

@@ -31,7 +31,7 @@ public class CameraController : MonoBehaviour
     public void SetCameraSettings(float minClamp, float maxClamp)
     {
         bottomClamp = minClamp;
-        maxClamp = maxClamp;
+        topClamp = maxClamp;
     }
 
     private void LateUpdate()

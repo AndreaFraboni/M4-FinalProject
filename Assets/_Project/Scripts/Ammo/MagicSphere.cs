@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class MagicSphere : MonoBehaviour
 {
-    [Header("Damage")]
-    [SerializeField] private int _damage = 10;
+    //[Header("Damage")]
+    //[SerializeField] private int _damage = 10;
 
     [Header("Lifetime")]
     [SerializeField] private float _lifeSpan = 5f;
