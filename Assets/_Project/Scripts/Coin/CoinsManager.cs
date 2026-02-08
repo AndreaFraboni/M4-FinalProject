@@ -14,20 +14,19 @@ public class CoinsManager : MonoBehaviour
     [Header("UI Manager")]
     [SerializeField] private UIManager _UIManager;
 
-    public GameObject Door;
-
-    public bool levelcompleted = false;
-
-    public int _coinsToPickup = 100;
+    [Header("Coins State")]
     public int _currentCoins = 0;
+    public int _coinsToPickup = 100;
+
+    [Header("Game Completed Parameters")]
+    public GameObject Door;
+    public bool levelcompleted = false;
 
     private void Awake()
     {
         if (_pc == null) _pc = GetComponent<PlayerController>();
-
         if (_audioManager == null) _audioManager = FindAnyObjectByType<AudioManager>();
         if (_UIManager == null) _UIManager = FindAnyObjectByType<UIManager>();
-
     }
 
     private void OnEnable()

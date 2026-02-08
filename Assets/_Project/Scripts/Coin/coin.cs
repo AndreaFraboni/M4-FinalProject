@@ -4,11 +4,10 @@ using UnityEngine;
 
 public class Coin : MonoBehaviour
 {
-    [Header("COIN parameters")]
+    [Header("COIN object 3D")]
     [SerializeField] private float _coinRotSpeed = 100f;
     [SerializeField] private int _coinValue = 10;
 
-    // Update is called once per frame
     void Update()
     {
         transform.Rotate(_coinRotSpeed * Time.deltaTime, 0, 0);
@@ -18,7 +17,6 @@ public class Coin : MonoBehaviour
     {
         if (other.CompareTag(Tags.Player))
         {
-            //Debug.Log("TRIGGER WITH PLAYER");
             other.gameObject.GetComponent<PlayerController>().GetCoins(_coinValue);
             Destroy(gameObject);
         }

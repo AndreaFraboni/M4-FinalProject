@@ -155,6 +155,16 @@ public class PlayerController : MonoBehaviour
         _rb.AddForce(Vector3.up * _jumpForce, ForceMode.Impulse);
     }
 
+    public void GetHeartSfx()
+    {
+        _audioManager.PlaySFX("PickupHeart");
+    }
+
+    public void GetDamageSfx()
+    {
+        _audioManager.PlaySFX("GetDamage");
+    }
+
     public void GetCoins(int coinValue)
     {
         _audioManager.PlaySFX("PickupCoin");
@@ -207,7 +217,6 @@ public class PlayerController : MonoBehaviour
 
     public void OnChangeLife(int hp, int maxhp)
     {
-        _audioManager.PlaySFX("GetDamage");
         _lifeText.text = hp + "/" + maxhp;
         _bar_lifeBarFillable.fillAmount = (float)hp / maxhp;
     }
