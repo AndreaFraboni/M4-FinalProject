@@ -8,7 +8,7 @@ public class PlayerAnimationEvents : MonoBehaviour
 
     private void Awake()
     {
-       if (_pc==null) _pc = GetComponentInParent<PlayerController>();
+        if (_pc == null) _pc = GetComponentInParent<PlayerController>();
     }
 
     public void DestroygameObject()
@@ -17,4 +17,10 @@ public class PlayerAnimationEvents : MonoBehaviour
 
         _pc.DestroyGOPlayer();
     }
+
+    public void FootStepSfx()
+    {
+        _pc.FootStepSound();
+    }
+
 }

@@ -184,6 +184,12 @@ public class PlayerController : MonoBehaviour
         Destroy(gameObject);
     }
 
+    public void FootStepSound()
+    {
+        _audioManager.PlaySFX("FootStep");
+    }
+
+
     private void CheckFire()
     {
         if (_shooter != null)
