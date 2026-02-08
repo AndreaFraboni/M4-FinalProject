@@ -231,6 +231,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  _pc: {fileID: 0}
 --- !u!1 &3388422201669585514
 GameObject:
   m_ObjectHideFlags: 0
@@ -640,7 +641,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 9100000, guid: 8e2ec32717ccd97458cb2617963cf0c9, type: 2}
     - target: {fileID: 6041330210177057777, guid: 6af0eea20812c2647a3ed3a92185715b,
         type: 3}
       propertyPath: m_Layer
