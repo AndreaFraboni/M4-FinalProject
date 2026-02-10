@@ -1,33 +1,54 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class PlayerShootController : MonoBehaviour
 {
-    [SerializeField] private Bullet _bulletPrefab;
+    [Header("Bullet Settings")]
+    [SerializeField] private MagicSphere _magicSphere;
+    [SerializeField] private float _impulseForce = 50f;
 
     [SerializeField] private float _fireInterval = 0.5f;
-    [SerializeField] private float _maxDistance = 100f;
 
     [SerializeField] private GameObject _firePoint;
 
-    private float _lastShootTime;
+    [Header("SphereCast Settings")]
+    [SerializeField] private float _maxDistance = 200f;
+    [SerializeField] private float _radius = 0.005f;
 
+    [Header("Audio Manager")]
+    [SerializeField] private AudioManager _audioManager;
+
+    private Animator _anim;
+    private PlayerController _pc;
+
+    private float _lastShootTime;
     private Camera _cam;
     private Ray _ray;
     private float _hitPointRadius = 0.15f;
+
+    private Rotator _rotator;
 
     private Vector3 _direction;
 
     private void Awake()
     {
-        _cam = Camera.main;
+        if (_cam == null) _cam = Camera.main;
+        if (_anim == null) _anim = GetComponentInChildren<Animator>();
+        if (_rotator == null) _rotator = GetComponent<Rotator>();
+        if (_audioManager == null) _audioManager = FindAnyObjectByType<AudioManager>();
+        _pc = GetComponentInParent<PlayerController>();
     }
 
     void OnDrawGizmos()
     {
+        if (_cam == null) return;
+
         Gizmos.color = Color.red;
-        Gizmos.DrawRay(_ray.origin, _ray.direction * _maxDistance);
+        //Gizmos.DrawRay(_ray.origin, _ray.direction * _maxDistance);
+        Gizmos.DrawRay(_firePoint.transform.position, _ray.direction * _maxDistance);
 
         if (Physics.Raycast(_ray, out RaycastHit hit, _maxDistance))
         {
@@ -36,53 +57,61 @@ public class PlayerShootController : MonoBehaviour
         }
     }
 
-    public void ShootRay(Ray ray)
+    private void Update()
     {
-        _lastShootTime = Time.time;
-
-        _ray = ray;
-
-        Vector3 start = _ray.origin;
-        Vector3 direction = _ray.direction;
-
-        if (Physics.Raycast(start, direction, out RaycastHit hit, _maxDistance))
+        if (Input.GetMouseButtonDown(0))
         {
-            if (hit.collider != null)
-            {
-                if (hit.collider.TryGetComponent<IHitable>(out IHitable hitableobj))
-                {
-                    hitableobj.GetHit();
-                }
-            }
+            if (!CanShootNow()) return;
+            if (_pc.isFiring) return;
+            if (!_pc.isGrounded) return;
+            if (!_pc.isGrounded) return;
+
+            _pc.isFiring = true;
+
+            _ray = _cam.ScreenPointToRay(Input.mousePosition);
+
+            Vector3 start = _firePoint.transform.position;
+            _direction = _ray.direction;
+
+            // Ruota il player verso il mouse
+            //transform.LookAt(_direction + Vector3.up);
+
+            if (_rotator != null) _rotator.SetRotation(_direction);
+
+
+            // trigger animazione (alla fine chiamerà ShootBullet tramite Animation Event)
+            _anim.SetTrigger("MagicalAttack");
         }
     }
-    public void ShootBullet(Vector3 direction)
+
+    public void ShootBullet()
     {
         _lastShootTime = Time.time;
 
-        //Bullet clonedBullet = Instantiate(_bulletPrefab);
-        //clonedBullet.transform.position = _firePoint.transform.position;
-        //clonedBullet.Shoot(direction);
+        _pc.isFiring = false;
+
+        _audioManager.PlaySFX("ShootFireBall");
+
+
+        MagicSphere clonedMagicSphere = Instantiate(_magicSphere);
+        clonedMagicSphere.transform.position = _firePoint.transform.position;
+        clonedMagicSphere.Shoot(_direction);
+
+
+        //GameObject cloneBullet = Instantiate(_bulletPrefab, transform.position, Quaternion.identity);
+        //cloneBullet.gameObject.GetComponent<Bullet>().Shoot(direction, _bulletImpulseForce);
     }
-    public void TryToShoot(Vector3 direction)
+    public void TryToShoot()
     {
         if (CanShootNow())
         {
-            ShootBullet(direction);
+            ShootBullet();
         }
     }
 
     public bool CanShootNow()
     {
         return Time.time - _lastShootTime > _fireInterval;
-    }
-
-    public void TryToShootRay(Ray ray)
-    {
-        if (CanShootNow())
-        {
-            ShootRay(ray);
-        }
     }
 
 

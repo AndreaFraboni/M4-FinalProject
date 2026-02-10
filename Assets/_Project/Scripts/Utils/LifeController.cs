@@ -11,10 +11,13 @@ public class LifeController : MonoBehaviour
     [SerializeField] private UnityEvent _onDefeated;
     [Header("Player Referements")]
     [SerializeField] private PlayerController _pc;
+    [Header("Audio Manager")]
+    [SerializeField] private AudioManager _audioManager;
 
     private void Awake()
     {
         if (_pc == null) _pc = GetComponent<PlayerController>();
+        if (_audioManager == null) _audioManager = FindAnyObjectByType<AudioManager>();
     }
 
     // Getter
@@ -47,11 +50,11 @@ public class LifeController : MonoBehaviour
     {
         if (amount < 0)
         {
-            _pc.GetDamageSfx();
+            _audioManager.PlaySFX("GetDamage");
         }
         else
         {
-            _pc.GetHeartSfx();
+            _audioManager.PlaySFX("PickupHeart");
         }
 
         SetHp(_currenthp + amount);
@@ -60,5 +63,10 @@ public class LifeController : MonoBehaviour
     public void TakeDamage(int damage)
     {
         AddHp(-damage);
+    }
+
+    public void Defeated()
+    {
+        Destroy(gameObject);
     }
 }

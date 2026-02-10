@@ -198,7 +198,7 @@ SphereCollider:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 4352
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0
@@ -239,6 +239,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb825b7f713a7fd4aa67d95eba040575, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _audioManager: {fileID: 0}
   _cannonBaseAim: {fileID: 4471194361612238706}
   _firePoint: {fileID: 2358659978302630953}
   _projectilePrefab: {fileID: 1296096796299247977, guid: 1cbbda1b84857d9489aee50b15322419,

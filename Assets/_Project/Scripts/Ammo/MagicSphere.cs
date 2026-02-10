@@ -2,14 +2,19 @@ using UnityEngine;
 
 public class MagicSphere : MonoBehaviour
 {
-    //[Header("Damage")]
-    //[SerializeField] private int _damage = 10;
+    [Header("Audio Manager")]
+    [SerializeField] private AudioManager _audioManager;
 
-    [Header("Lifetime")]
+    [SerializeField] private int _damage = 10;
     [SerializeField] private float _lifeSpan = 5f;
-
-    [Header("Movement")]
     [SerializeField] private float _speed = 10f;
+
+    [Header("Explosion Damage")]
+    [SerializeField] private float _explosionRadius = 5f;
+    [SerializeField] private LayerMask _damageLayers;
+
+    private bool _isExploded = false;
+
 
     private Rigidbody _rb;
 
@@ -18,6 +23,7 @@ public class MagicSphere : MonoBehaviour
     private void Awake()
     {
         if (_rb == null) _rb = GetComponent<Rigidbody>();
+        if (_audioManager == null) _audioManager = FindAnyObjectByType<AudioManager>();
     }
 
     private void OnEnable()
@@ -25,33 +31,40 @@ public class MagicSphere : MonoBehaviour
         Destroy(gameObject, _lifeSpan);
     }
 
-    //private void FixedUpdate()
-    //{
-    //    if (_movedir != Vector3.zero)
-    //    {
-    //        //_rb.MovePosition(transform.position + _movedir * (_speed * Time.fixedDeltaTime));           
-    //    }
-    //}
+    private void FixedUpdate()
+    {
+        if (_movedir != Vector3.zero)
+        {
+            _rb.MovePosition(transform.position + _movedir * (_speed * Time.fixedDeltaTime));
+        }
+    }
 
     public void Shoot(Vector3 dir)
     {
-        if (dir.sqrMagnitude < 0.0001f) return;
         if (dir.sqrMagnitude > 1f) dir.Normalize();
+
         _movedir = dir;
-
-        _rb.velocity = _movedir * _speed;
-
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        //if (other != null)
-        //{
-        //    if (other.gameObject.TryGetComponent<LifeController>(out LifeController _lifeController))
-        //    {
-        //        _lifeController.TakeDamage(_damage);
-        //        Destroy(gameObject);
-        //    }
-        //}
+        _audioManager.PlaySFX("MagicSpellExplode");
+        Explode();
+    }
+
+    private void Explode()
+    {
+        if (_isExploded) return;
+        _isExploded = true;
+
+        Collider[] hits = Physics.OverlapSphere(transform.position, _explosionRadius, _damageLayers);
+        foreach (Collider hit in hits)
+        {
+            if (hit.TryGetComponent<LifeController>(out LifeController life))
+            {
+                life.TakeDamage(_damage);
+            }
+        }
+        Destroy(gameObject);
     }
 }

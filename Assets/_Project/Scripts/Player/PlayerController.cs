@@ -14,7 +14,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float _speed = 6.0f;
     [SerializeField] private float _smooth = 10f;
     [SerializeField] private float _jumpForce = 5f;
-
     [Header("Audio Manager")]
     [SerializeField] private AudioManager _audioManager;
 
@@ -45,6 +44,9 @@ public class PlayerController : MonoBehaviour
     public bool isGrounded = false;
     public bool isJump = false;
     public bool isRunning = false;
+    public bool isFiring = false;
+
+    public bool isFalling = false;
 
     public int _currentCoins = 0;
 
@@ -60,10 +62,8 @@ public class PlayerController : MonoBehaviour
         if (_UIManager == null) _UIManager = FindAnyObjectByType<UIManager>();
         if (_playerAnimation == null) _playerAnimation = GetComponentInParent<PlayerAnimation>();
         if (_shooter == null) _shooter = GetComponent<Shooter>();
-
         _capsuleCollider = GetComponent<CapsuleCollider>();
         if (_capsuleCollider == null) Debug.LogError("Non trovo il COLLIDER !!!!!");
-
         _cam = Camera.main;
     }
 
@@ -73,7 +73,7 @@ public class PlayerController : MonoBehaviour
         CheckRun();
         CheckJump();
 
-        CheckFire();
+        //CheckFire();
     }
 
     private void FixedUpdate()
@@ -87,6 +87,7 @@ public class PlayerController : MonoBehaviour
     private void CheckInput()
     {
         if (!isAlive) return;
+        if (isFiring) return;
 
         horizontal = Input.GetAxisRaw("Horizontal");
         vertical = Input.GetAxisRaw("Vertical");
@@ -103,6 +104,7 @@ public class PlayerController : MonoBehaviour
     private void CheckRun()
     {
         if (!isAlive) return;
+        if (isFiring) return;
 
         isRunning = (Input.GetKey("left shift"));
     }
@@ -110,20 +112,24 @@ public class PlayerController : MonoBehaviour
     private void CheckJump()
     {
         if (!isAlive) return;
+        if (isFiring) return;
 
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
             isJump = true;
             _playerAnimation.SetBoolParam("isWalking", false);
             _playerAnimation.SetBoolParam("isRunning", false);
+            _playerAnimation.TriggerJumpUp();
+            isGrounded = false;
         }
     }
 
     private void Move()
     {
         if (!isAlive) return;
+        if (isFiring) return;
 
-        if (_mover != null)
+        if (_mover != null && !isFiring)
         {
             if (isRunning)
             {
@@ -141,6 +147,7 @@ public class PlayerController : MonoBehaviour
     private void Rotation()
     {
         if (!isAlive) return;
+        if (isFiring) return;
 
         // se non stai davvero muovendo, non ruotare
         if (currentDirection.sqrMagnitude < 0.0004f) return;
@@ -151,18 +158,10 @@ public class PlayerController : MonoBehaviour
     private void Jump()
     {
         if (!isAlive) return;
+        if (isFiring) return;
+
         isJump = false;
         _rb.AddForce(Vector3.up * _jumpForce, ForceMode.Impulse);
-    }
-
-    public void GetHeartSfx()
-    {
-        _audioManager.PlaySFX("PickupHeart");
-    }
-
-    public void GetDamageSfx()
-    {
-        _audioManager.PlaySFX("GetDamage");
     }
 
     public void GetCoins(int coinValue)
@@ -190,23 +189,21 @@ public class PlayerController : MonoBehaviour
     }
 
 
-    private void CheckFire()
-    {
-        if (_shooter != null)
-        {
-            if (Input.GetMouseButtonDown(0))
-            {
-                Vector3 mouseScreenPosition = Input.mousePosition;
-                mouseScreenPosition.z = -_cam.transform.position.z; // distanza tra camera e piano XY
-                Vector3 mouseWorldPosition = _cam.ScreenToWorldPoint(mouseScreenPosition);
-                Vector3 shootDirection = mouseWorldPosition - transform.position;
-
-                if (shootDirection != Vector3.zero) shootDirection.Normalize();
-
-                _shooter.TryToShoot(shootDirection);
-            }
-        }
-    }
+    //private void CheckFire()
+    //{
+    //    if (_shooter != null)
+    //    {
+    //        if (Input.GetMouseButtonDown(0))
+    //        {
+    //            Vector3 mouseScreenPosition = Input.mousePosition;
+    //            mouseScreenPosition.z = -_cam.transform.position.z; // distanza tra camera e piano XY
+    //            Vector3 mouseWorldPosition = _cam.ScreenToWorldPoint(mouseScreenPosition);
+    //            Vector3 shootDirection = mouseWorldPosition - transform.position;
+    //            if (shootDirection != Vector3.zero) shootDirection.Normalize();
+    //            _shooter.TryToShoot(shootDirection);
+    //        }
+    //    }
+    //}
 
 
 

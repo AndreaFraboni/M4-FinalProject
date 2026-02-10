@@ -20,16 +20,16 @@ public class Mover : MonoBehaviour
     private void FixedUpdate()
     {
         if (!_pc.isAlive) return;
+        if (_pc.isFiring)
+        {
+            _rb.velocity = new Vector3(0f, _rb.velocity.y, 0f);
+            return;
+        }
 
         if (currentDirection.magnitude > 0.01f)
         {
             Vector3 velocity = currentDirection * _speed;
-            _rb.velocity = new Vector3(velocity.x, _rb.velocity.y, velocity.z);
-
-            //Quaternion targetRotation = Quaternion.LookRotation(currentDirection);
-            //Quaternion rotation = Quaternion.Slerp(transform.rotation, targetRotation, _rotationSpeed * Time.deltaTime);
-            //_rb.MoveRotation(rotation);
-
+            if (!_pc.isFiring) _rb.velocity = new Vector3(velocity.x, _rb.velocity.y, velocity.z);
         }
         else
         {

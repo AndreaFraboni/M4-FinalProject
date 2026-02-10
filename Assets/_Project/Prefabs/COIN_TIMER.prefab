@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1478254814942972245}
   - component: {fileID: 3323004597752737508}
   - component: {fileID: 2989962896695904763}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: COIN_TIMER
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -67,8 +67,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f694f6efc1fba2b42809ae2d6b1e2a38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coinSpeed: 100
-  coinValue: 20
+  _coinRotSpeed: 100
   _timer: {fileID: 0}
   addtime: 10
 --- !u!1 &7787208115572748093
@@ -82,7 +81,7 @@ GameObject:
   - component: {fileID: 1398058726263494151}
   - component: {fileID: 8909897220259225950}
   - component: {fileID: 770121484820060182}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: bitcoin
   m_TagString: Untagged
   m_Icon: {fileID: 0}

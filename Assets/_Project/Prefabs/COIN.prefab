@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1478254814942972245}
   - component: {fileID: 8689983925186138077}
   - component: {fileID: 3323004597752737508}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: COIN
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -46,8 +46,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 085c14cf046f8274c80b11d35c707c1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coinSpeed: 100
-  coinValue: 10
+  _coinRotSpeed: 100
+  _coinValue: 10
 --- !u!135 &3323004597752737508
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -80,7 +80,7 @@ GameObject:
   - component: {fileID: 1398058726263494151}
   - component: {fileID: 8909897220259225950}
   - component: {fileID: 770121484820060182}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: bitcoin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
