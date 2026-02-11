@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -9,12 +7,10 @@ public class PlayerShootController : MonoBehaviour
     [Header("Bullet Settings")]
     [SerializeField] private MagicSphere _magicSphere;
     [SerializeField] private float _impulseForce = 50f;
-
     [SerializeField] private float _fireInterval = 0.5f;
-
     [SerializeField] private GameObject _firePoint;
 
-    [Header("SphereCast Settings")]
+    [Header("Gizmos Settings")]
     [SerializeField] private float _maxDistance = 200f;
     [SerializeField] private float _radius = 0.005f;
 
@@ -23,12 +19,10 @@ public class PlayerShootController : MonoBehaviour
 
     private Animator _anim;
     private PlayerController _pc;
-
     private float _lastShootTime;
     private Camera _cam;
     private Ray _ray;
     private float _hitPointRadius = 0.15f;
-
     private Rotator _rotator;
 
     private Vector3 _direction;
@@ -39,7 +33,7 @@ public class PlayerShootController : MonoBehaviour
         if (_anim == null) _anim = GetComponentInChildren<Animator>();
         if (_rotator == null) _rotator = GetComponent<Rotator>();
         if (_audioManager == null) _audioManager = FindAnyObjectByType<AudioManager>();
-        _pc = GetComponentInParent<PlayerController>();
+        if (_pc == null) _pc = GetComponentInParent<PlayerController>();
     }
 
     void OnDrawGizmos()
@@ -64,20 +58,15 @@ public class PlayerShootController : MonoBehaviour
             if (!CanShootNow()) return;
             if (_pc.isFiring) return;
             if (!_pc.isGrounded) return;
-            if (!_pc.isGrounded) return;
 
             _pc.isFiring = true;
 
             _ray = _cam.ScreenPointToRay(Input.mousePosition);
 
             Vector3 start = _firePoint.transform.position;
+
             _direction = _ray.direction;
-
-            // Ruota il player verso il mouse
-            //transform.LookAt(_direction + Vector3.up);
-
             if (_rotator != null) _rotator.SetRotation(_direction);
-
 
             // trigger animazione (alla fine chiamerà ShootBullet tramite Animation Event)
             _anim.SetTrigger("MagicalAttack");
@@ -92,15 +81,11 @@ public class PlayerShootController : MonoBehaviour
 
         _audioManager.PlaySFX("ShootFireBall");
 
-
         MagicSphere clonedMagicSphere = Instantiate(_magicSphere);
         clonedMagicSphere.transform.position = _firePoint.transform.position;
         clonedMagicSphere.Shoot(_direction);
-
-
-        //GameObject cloneBullet = Instantiate(_bulletPrefab, transform.position, Quaternion.identity);
-        //cloneBullet.gameObject.GetComponent<Bullet>().Shoot(direction, _bulletImpulseForce);
     }
+
     public void TryToShoot()
     {
         if (CanShootNow())

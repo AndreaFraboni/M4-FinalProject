@@ -27,25 +27,19 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private UnityEvent<int> _onCoinPickup;
 
     private Shooter _shooter;
-
     private CapsuleCollider _capsuleCollider;
-
     private Rigidbody _rb;
     private Mover _mover;
     private Rotator _rotator;
-
     private float horizontal, vertical = 0f;
     private Vector3 currentDirection = Vector3.zero;
-
     private Camera _cam;
     private Ray _ray;
-
     public bool isAlive = true;
     public bool isGrounded = false;
     public bool isJump = false;
     public bool isRunning = false;
     public bool isFiring = false;
-
     public bool isFalling = false;
 
     public int _currentCoins = 0;
@@ -62,8 +56,7 @@ public class PlayerController : MonoBehaviour
         if (_UIManager == null) _UIManager = FindAnyObjectByType<UIManager>();
         if (_playerAnimation == null) _playerAnimation = GetComponentInParent<PlayerAnimation>();
         if (_shooter == null) _shooter = GetComponent<Shooter>();
-        _capsuleCollider = GetComponent<CapsuleCollider>();
-        if (_capsuleCollider == null) Debug.LogError("Non trovo il COLLIDER !!!!!");
+        if (_capsuleCollider == null) _capsuleCollider = GetComponent<CapsuleCollider>();
         _cam = Camera.main;
     }
 
@@ -72,8 +65,6 @@ public class PlayerController : MonoBehaviour
         CheckInput();
         CheckRun();
         CheckJump();
-
-        //CheckFire();
     }
 
     private void FixedUpdate()
@@ -187,37 +178,6 @@ public class PlayerController : MonoBehaviour
     {
         _audioManager.PlaySFX("FootStep");
     }
-
-
-    //private void CheckFire()
-    //{
-    //    if (_shooter != null)
-    //    {
-    //        if (Input.GetMouseButtonDown(0))
-    //        {
-    //            Vector3 mouseScreenPosition = Input.mousePosition;
-    //            mouseScreenPosition.z = -_cam.transform.position.z; // distanza tra camera e piano XY
-    //            Vector3 mouseWorldPosition = _cam.ScreenToWorldPoint(mouseScreenPosition);
-    //            Vector3 shootDirection = mouseWorldPosition - transform.position;
-    //            if (shootDirection != Vector3.zero) shootDirection.Normalize();
-    //            _shooter.TryToShoot(shootDirection);
-    //        }
-    //    }
-    //}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     public void OnChangeLife(int hp, int maxhp)
     {
         _lifeText.text = hp + "/" + maxhp;
