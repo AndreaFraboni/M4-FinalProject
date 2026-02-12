@@ -17,6 +17,9 @@ public class PlayerShootController : MonoBehaviour
     [Header("Audio Manager")]
     [SerializeField] private AudioManager _audioManager;
 
+    [Header("Ref To UI Manager")]
+    [SerializeField] private UIManager _uiManager;
+
     private Animator _anim;
     private PlayerController _pc;
     private float _lastShootTime;
@@ -34,6 +37,7 @@ public class PlayerShootController : MonoBehaviour
         if (_rotator == null) _rotator = GetComponent<Rotator>();
         if (_audioManager == null) _audioManager = FindAnyObjectByType<AudioManager>();
         if (_pc == null) _pc = GetComponentInParent<PlayerController>();
+        if (_uiManager == null) _uiManager = FindAnyObjectByType<UIManager>();
     }
 
     void OnDrawGizmos()
@@ -58,6 +62,7 @@ public class PlayerShootController : MonoBehaviour
             if (!CanShootNow()) return;
             if (_pc.isFiring) return;
             if (!_pc.isGrounded) return;
+            if (_uiManager.isPaused) return;
 
             _pc.isFiring = true;
 

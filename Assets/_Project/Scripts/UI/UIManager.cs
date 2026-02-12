@@ -11,7 +11,7 @@ public class UIManager : MonoBehaviour
     public GameObject WinnerBanner;
     public GameObject menuWinner;
 
-    private bool isPaused = false;
+    public bool isPaused = false;
     AudioManager _audioManager;
 
     private void Awake()
