@@ -31,16 +31,22 @@ public class PlayerController : MonoBehaviour
     private Rigidbody _rb;
     private Mover _mover;
     private Rotator _rotator;
+    
     private float horizontal, vertical = 0f;
     private Vector3 currentDirection = Vector3.zero;
+    
     private Camera _cam;
     private Ray _ray;
+
     public bool isAlive = true;
     public bool isGrounded = false;
     public bool isJump = false;
     public bool isRunning = false;
     public bool isFiring = false;
     public bool isFalling = false;
+
+    private bool _deathPending = false;
+    private bool _deathStarted = false;
 
     public int _currentCoins = 0;
 
@@ -73,6 +79,11 @@ public class PlayerController : MonoBehaviour
         Rotation();
 
         if (isJump) Jump();
+
+        if (_deathPending && isGrounded)
+        {
+            StartDeathAnimation();
+        }
     }
 
     private void CheckInput()
@@ -183,12 +194,15 @@ public class PlayerController : MonoBehaviour
         _lifeText.text = hp + "/" + maxhp;
         _bar_lifeBarFillable.fillAmount = (float)hp / maxhp;
     }
-
-    public void OnDefeated()
+    
+    private void StartDeathAnimation()
     {
-        isAlive = false;
+        if (_deathStarted) return;
 
-        _audioManager.PlaySFX("DeathSound");
+        _deathStarted = true;
+        _deathPending = false;
+
+        _playerAnimation.SetBoolParam("isDying", true);
 
         if (_capsuleCollider != null) _capsuleCollider.enabled = false;
 
@@ -198,8 +212,21 @@ public class PlayerController : MonoBehaviour
             _rb.angularVelocity = Vector3.zero;
             _rb.isKinematic = true;
         }
-
-        _playerAnimation.SetBoolParam("isDying", true);
     }
+    public void OnDefeated()
+    {
+        isAlive = false;
+        isFiring = false;
 
+        _audioManager.PlaySFX("DeathSound");
+
+        if (isGrounded)
+        {
+            StartDeathAnimation();
+        }
+        else
+        {
+            _deathPending = true;
+        }
+    }
 }

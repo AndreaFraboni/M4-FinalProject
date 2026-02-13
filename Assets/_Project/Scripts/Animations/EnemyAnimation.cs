@@ -7,20 +7,20 @@ public class EnemyAnimation : MonoBehaviour
     [Header("Animator Params")]
     [SerializeField] private string _verticalSpeedParamName = "vSpeed";
     [SerializeField] private string _horizontalSpeedParamName = "hSpeed";
-    [SerializeField] private string _walkBool = "isWalking";
-    [SerializeField] private string _runBool = "isRunning";
+    //[SerializeField] private string _walkBool = "isWalking";
+    //[SerializeField] private string _runBool = "isRunning";
     [SerializeField] private string _fallBool = "isFalling";
     [SerializeField] private string _jumpTrig = "JumpUp";
     [SerializeField] private string _landTrig = "Landing";
 
     [Header("Falling")]
-    [SerializeField] private float _fallThreshold = -0.1f;
+   // [SerializeField] private float _fallThreshold = -0.1f;
 
     private Animator _anim;
     private EnemyController _ec;
     private Rigidbody _rb;
-    //    private bool _wasGrounded;
-    private bool _isFalling;
+    //private bool _wasGrounded;
+    //private bool _isFalling;
 
     private void Awake()
     {
@@ -61,7 +61,7 @@ public class EnemyAnimation : MonoBehaviour
 
         _anim.ResetTrigger(_landTrig);
         _anim.SetBool(_fallBool, false);
-        _isFalling = false;
+       // _isFalling = false;
         _anim.SetTrigger(_jumpTrig); // attiva trigger per saltare ==> JumpUp
     }
 

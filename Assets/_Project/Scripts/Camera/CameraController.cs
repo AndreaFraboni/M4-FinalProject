@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class CameraController : MonoBehaviour
@@ -17,6 +19,12 @@ public class CameraController : MonoBehaviour
 
     [SerializeField] private float _startYaw = 0f;
     [SerializeField] private float _startPitch = 0f;
+
+    [SerializeField] private float _sphereRadius = 0.2f;
+    [SerializeField] private float _minOffestFromWall = 0.1f;
+    [SerializeField] private LayerMask _groundMask;
+
+    private Vector3 lookAt;
 
     private float _yaw = 0f;
     private float _pitch = 0f;
@@ -40,27 +48,37 @@ public class CameraController : MonoBehaviour
 
         if (Input.GetMouseButton(1))
         {
-            //transform.LookAt(_target);
-            //_yaw = Input.GetAxis("Mouse X") * _mouseSensitivity;
-            //_pitch = Input.GetAxis("Mouse Y") * _mouseSensitivity;
-            //_pitch = Mathf.Clamp(_pitch, bottomClamp, topClamp);
-            //transform.eulerAngles += new Vector3(-_pitch, _yaw, 0);
-
             _yaw += Input.GetAxis("Mouse X") * _mouseSensitivity;
             _pitch -= Input.GetAxis("Mouse Y") * _mouseSensitivity;
+
             _pitch = Mathf.Clamp(_pitch, bottomClamp, topClamp);
 
             Quaternion rotation = Quaternion.Euler(_pitch, _yaw, 0);
             Vector3 desiredPosition = _target.position + rotation * offset;
 
-            Vector3 lookAt = _target.position + Vector3.up * 2;
+            lookAt = _target.position + Vector3.up * 2;
             Quaternion lookRotation = Quaternion.LookRotation(lookAt - desiredPosition);
             transform.SetPositionAndRotation(desiredPosition, lookRotation);
         }
 
         orbitRadius -= Input.mouseScrollDelta.y / _mouseSensitivity;
         orbitRadius = Mathf.Clamp(orbitRadius, _minZoomDistance, _maxZoomDistance);
-        transform.position = _target.position - transform.forward * orbitRadius;
 
+        Vector3 pivotTarget = _target.position + Vector3.up;
+        Vector3 desiredPos = _target.position - transform.forward * orbitRadius;
+        Vector3 direction = desiredPos - pivotTarget;
+        float distance = direction.magnitude;
+        if (distance > 0.001f)
+        {
+            direction /= distance;
+
+            if (Physics.SphereCast(pivotTarget, _sphereRadius, direction, out RaycastHit hit, distance, _groundMask, QueryTriggerInteraction.Ignore))
+            {
+                float safeDist = Mathf.Max(0f, hit.distance - _minOffestFromWall);
+                desiredPos = pivotTarget + direction * safeDist;
+            }
+        }
+
+        transform.position = desiredPos;
     }
 }

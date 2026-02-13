@@ -6,13 +6,12 @@ public class PlayerShootController : MonoBehaviour
 {
     [Header("Bullet Settings")]
     [SerializeField] private MagicSphere _magicSphere;
-    [SerializeField] private float _impulseForce = 50f;
+    //[SerializeField] private float _impulseForce = 50f;
     [SerializeField] private float _fireInterval = 0.5f;
     [SerializeField] private GameObject _firePoint;
 
     [Header("Gizmos Settings")]
     [SerializeField] private float _maxDistance = 200f;
-    [SerializeField] private float _radius = 0.005f;
 
     [Header("Audio Manager")]
     [SerializeField] private AudioManager _audioManager;

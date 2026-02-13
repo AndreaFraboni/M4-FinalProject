@@ -11,12 +11,9 @@ public class EnemyController : MonoBehaviour
 
     [Header("Enemy Animation")]
     [SerializeField] private EnemyAnimation _enemyAnimation;
-
     [SerializeField] private Transform _target;
-
-    [SerializeField] private float _rotationSpeed = 5f;
-
-    [SerializeField] private float _speed = 2.0f;
+    //[SerializeField] private float _rotationSpeed = 5f;
+    //[SerializeField] private float _speed = 2.0f;
 
     private Rigidbody _rb;
 

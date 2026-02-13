@@ -105,52 +105,38 @@ public class PlayerAnimation : MonoBehaviour
             _anim.SetBool(_runBool, false);
         }
 
-        if (_pc.isFiring)
+        if (_pc.isFiring) // ferma tutto e permetti di eseguire l'anim dello sparo senza sovrapposizioni di movimento !
         {
             _anim.SetBool(_walkBool, false);
             _anim.SetBool(_runBool, false);
-
             _anim.SetFloat(_horizontalSpeedParamName, 0f);
             _anim.SetFloat(_verticalSpeedParamName, 0f);
         }
 
-        //if (!grounded && yVel < _fallThreshold) // il player sta cadendo ???
-        //{
-        //    if (!_isFalling)
-        //    {
-        //        _isFalling = true;
-        //        _anim.SetBool(_fallBool, true);
-        //    }
-        //}
-        if (!grounded)
+        if (!grounded) // sei in aria
         {
             bool shouldFall = yVel < _fallThreshold;
-
-            // aggiorna sempre lo stato (sia true che false)
-            if (shouldFall != _pc.isFalling)
+            if (shouldFall != _pc.isFalling) // stai cadendo in verticale 
             {
                 _pc.isFalling = shouldFall;
                 _anim.SetBool(_fallBool, _pc.isFalling);
             }
         }
-        else
+        else // ok allora sei a terra ora
         {
-            // se sei grounded, falling deve essere off
+            // quindi falling deve essere off
             if (_pc.isFalling)
             {
                 _pc.isFalling = false;
                 _anim.SetBool(_fallBool, false);
             }
         }
-
-
         if (!_wasGrounded && grounded) // prima non era a terra ora lo è !!!
         {
             _anim.SetBool(_fallBool, false);
             _pc.isFalling = false;
             SetTriggerParam(_landTrig);
         }
-
         _wasGrounded = grounded;
     }
 }
