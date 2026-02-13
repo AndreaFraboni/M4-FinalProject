@@ -189,6 +189,8 @@ MonoBehaviour:
   isGrounded: 0
   isJump: 0
   isRunning: 0
+  isFiring: 0
+  isFalling: 0
   _currentCoins: 0
 --- !u!114 &6934732528404189751
 MonoBehaviour:
@@ -261,6 +263,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   _pc: {fileID: 0}
+  _audioManager: {fileID: 0}
 --- !u!114 &714775041370404543
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -295,11 +298,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _magicSphere: {fileID: 8613640103724703367, guid: 4ad0ef81d693a38429f75a22e59bdb3e,
     type: 3}
-  _impulseForce: 10
   _fireInterval: 0.5
   _firePoint: {fileID: 4598818983655850943}
   _maxDistance: 100
-  _radius: 0.005
+  _audioManager: {fileID: 0}
+  _uiManager: {fileID: 0}
 --- !u!1001 &1898537272835836882
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -512,6 +515,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _pc: {fileID: 0}
+  _shooter: {fileID: 0}
 --- !u!4 &8633764398034305065 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -5515783359193845756, guid: 6ba7875b45f0ffc42a35d24241896e83,

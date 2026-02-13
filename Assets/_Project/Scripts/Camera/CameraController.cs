@@ -64,7 +64,7 @@ public class CameraController : MonoBehaviour
         orbitRadius -= Input.mouseScrollDelta.y / _mouseSensitivity;
         orbitRadius = Mathf.Clamp(orbitRadius, _minZoomDistance, _maxZoomDistance);
 
-        Vector3 pivotTarget = _target.position + Vector3.up;
+        Vector3 pivotTarget = _target.position + Vector3.up * 2;
         Vector3 desiredPos = _target.position - transform.forward * orbitRadius;
         Vector3 direction = desiredPos - pivotTarget;
         float distance = direction.magnitude;
