@@ -3596,6 +3596,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 459551026}
     m_Modifications:
+    - target: {fileID: 5170109679077812777, guid: 817f3ebfe93351f4aa4c4308d681c7eb,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.36
+      objectReference: {fileID: 0}
     - target: {fileID: 8527323271059275672, guid: 817f3ebfe93351f4aa4c4308d681c7eb,
         type: 3}
       propertyPath: m_Name
@@ -3609,7 +3614,7 @@ PrefabInstance:
     - target: {fileID: 8881779599007575742, guid: 817f3ebfe93351f4aa4c4308d681c7eb,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -22.84
+      value: -24.7
       objectReference: {fileID: 0}
     - target: {fileID: 8881779599007575742, guid: 817f3ebfe93351f4aa4c4308d681c7eb,
         type: 3}
@@ -28886,10 +28891,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wall_d_i (3)
       objectReference: {fileID: 0}
-    - target: {fileID: 162040, guid: 869bfcd3711d81c4b91357c990e9b88c, type: 3}
-      propertyPath: m_Layer
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 402308, guid: 869bfcd3711d81c4b91357c990e9b88c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 96.39
@@ -39232,7 +39233,7 @@ PrefabInstance:
     - target: {fileID: 7302491606436708944, guid: 4691fe43b6b873146986f5eba7682fd7,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.9
+      value: 5.891
       objectReference: {fileID: 0}
     - target: {fileID: 7302491606436708944, guid: 4691fe43b6b873146986f5eba7682fd7,
         type: 3}
@@ -40105,7 +40106,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.23956165, y: 0.22959027}
   m_AnchorMax: {x: 0.7594212, y: 0.33666593}
-  m_AnchoredPosition: {x: 0.5, y: -1.5000458}
+  m_AnchoredPosition: {x: 0.5, y: -1.5000153}
   m_SizeDelta: {x: -5, y: -7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &3752372274629878182
