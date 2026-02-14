@@ -61,7 +61,7 @@ ModelImporter:
       curves: []
       events:
       - time: 0.9946736
-        functionName: DestroygameObject
+        functionName: AE_DestroygameObject
         data: 
         objectReferenceParameter: {fileID: 11500000, guid: 211f0eab87cfbd245b6e6bb3b5fa608e,
           type: 3}

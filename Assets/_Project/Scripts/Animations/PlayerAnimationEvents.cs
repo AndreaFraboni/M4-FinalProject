@@ -11,13 +11,13 @@ public class PlayerAnimationEvents : MonoBehaviour
         if (_shooter == null) _shooter = GetComponentInParent<PlayerShootController>();
     }
 
-    public void DestroygameObject()
+    public void AE_DestroygameObject()
     {
         if (_pc == null) return;
         _pc.DestroyGOPlayer();
     }
 
-    public void FootStepSfx()
+    public void AE_FootStepSfx()
     {
         _pc.FootStepSound();
     }
