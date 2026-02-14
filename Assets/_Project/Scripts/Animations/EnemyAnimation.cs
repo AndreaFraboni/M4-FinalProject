@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyAnimation : MonoBehaviour
@@ -14,7 +12,7 @@ public class EnemyAnimation : MonoBehaviour
     [SerializeField] private string _landTrig = "Landing";
 
     [Header("Falling")]
-   // [SerializeField] private float _fallThreshold = -0.1f;
+    // [SerializeField] private float _fallThreshold = -0.1f;
 
     private Animator _anim;
     private EnemyController _ec;
@@ -27,7 +25,6 @@ public class EnemyAnimation : MonoBehaviour
         _anim = GetComponentInChildren<Animator>();
         _ec = GetComponentInParent<EnemyController>();
         _rb = _ec.GetComponent<Rigidbody>();
-
         //        _wasGrounded = _ec.isGrounded;
     }
 
@@ -61,7 +58,7 @@ public class EnemyAnimation : MonoBehaviour
 
         _anim.ResetTrigger(_landTrig);
         _anim.SetBool(_fallBool, false);
-       // _isFalling = false;
+        // _isFalling = false;
         _anim.SetTrigger(_jumpTrig); // attiva trigger per saltare ==> JumpUp
     }
 

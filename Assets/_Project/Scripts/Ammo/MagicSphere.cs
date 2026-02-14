@@ -2,21 +2,21 @@ using UnityEngine;
 
 public class MagicSphere : MonoBehaviour
 {
-    [Header("Audio Manager")]
-    [SerializeField] private AudioManager _audioManager;
-
+    [Header("MagicSphere Parameters")]
     [SerializeField] private int _damage = 10;
     [SerializeField] private float _lifeSpan = 5f;
     [SerializeField] private float _speed = 10f;
 
-    [Header("Explosion Damage")]
+    [Header("MagicSphere Damage Around impact point")]
     [SerializeField] private float _explosionRadius = 5f;
     [SerializeField] private LayerMask _damageLayers;
 
-    private bool _isExploded = false;
-
+    [Header("Audio Manager")]
+    [SerializeField] private AudioManager _audioManager;
 
     private Rigidbody _rb;
+
+    private bool _isExploded = false;
 
     private Vector3 _movedir;
 
@@ -42,7 +42,6 @@ public class MagicSphere : MonoBehaviour
     public void Shoot(Vector3 dir)
     {
         if (dir.sqrMagnitude > 1f) dir.Normalize();
-
         _movedir = dir;
     }
 

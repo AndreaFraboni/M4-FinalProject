@@ -14,9 +14,10 @@ public class PlayerAnimation : MonoBehaviour
     [Header("Falling")]
     [SerializeField] private float _fallThreshold = -0.1f;
 
-    private Animator _anim;
     private PlayerController _pc;
     private Rigidbody _rb;
+    private Animator _anim;
+
     private bool _wasGrounded;
 
     private void Awake()
@@ -24,7 +25,6 @@ public class PlayerAnimation : MonoBehaviour
         _anim = GetComponentInChildren<Animator>();
         _pc = GetComponentInParent<PlayerController>();
         _rb = _pc.GetComponent<Rigidbody>();
-
         _wasGrounded = _pc.isGrounded;
     }
 
@@ -55,7 +55,6 @@ public class PlayerAnimation : MonoBehaviour
     public void TriggerJumpUp()
     {
         if (!_anim) return;
-
         _anim.ResetTrigger(_landTrig);
         _anim.SetBool(_fallBool, false);
         _pc.isFalling = false;
@@ -66,9 +65,9 @@ public class PlayerAnimation : MonoBehaviour
     {
         if (!_pc || !_anim || !_rb) return;
 
+        // Check iniziale
         Vector3 dir = _pc.GetDirection(); // prendi direzione del player
         bool moving = dir.magnitude > 0.01f; // si sta muovendo ????
-
         bool grounded = _pc.isGrounded; // E' A TERRA ???
         float yVel = _rb.velocity.y; // PRENDO LA VELOCITà VERTICALE PER CAPIRE QUANDO STA' CADENDO
 
@@ -140,4 +139,3 @@ public class PlayerAnimation : MonoBehaviour
         _wasGrounded = grounded;
     }
 }
-

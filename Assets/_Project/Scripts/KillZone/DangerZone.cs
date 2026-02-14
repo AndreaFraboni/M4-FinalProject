@@ -32,5 +32,4 @@ public class DangerZone : MonoBehaviour
     {
         _timer = 0;
     }
-
 }

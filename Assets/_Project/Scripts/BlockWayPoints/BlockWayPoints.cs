@@ -1,17 +1,14 @@
 using System.Collections.Generic;
-using Unity.Burst.CompilerServices;
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
 
 public class BlockWayPoints : MonoBehaviour
 {
-    [Header("Waypoints")][SerializeField] private List<Transform> _wayPoints = new List<Transform>();
+    [Header("Waypoints")]
+    [SerializeField] private List<Transform> _wayPoints = new List<Transform>();
     [SerializeField] private int _wayPointIndex = 0;
     [SerializeField] private bool _isLoop = true;
     [SerializeField] private bool _isRandom = false;
     [SerializeField] private bool _isActive = false;
-
-    //    [SerializeField] private float _impulseForce = 6.0f;
 
     [Header("Block Parameters")]
     [SerializeField] private float _moveSpeed = 5f;
@@ -63,12 +60,13 @@ public class BlockWayPoints : MonoBehaviour
                 else
                 {
                     _wayPointIndex++;
-                    if (_isLoop && _wayPointIndex >= _wayPoints.Count)
-                        _wayPointIndex = 0;
+                    if (_isLoop && _wayPointIndex >= _wayPoints.Count) _wayPointIndex = 0;
                 }
                 return;
             }
+
             direction.Normalize();
+
             _rb.velocity = direction * _moveSpeed;
         }
     }
@@ -82,7 +80,6 @@ public class BlockWayPoints : MonoBehaviour
             if (collision.gameObject.TryGetComponent<LifeController>(out LifeController life))
             {
                 _Player.PlayerHitByObject();
-                //collision.collider.attachedRigidbody.AddForce(direction * _impulseForce, ForceMode.Impulse);
                 life.TakeDamage(_damage);
             }
         }

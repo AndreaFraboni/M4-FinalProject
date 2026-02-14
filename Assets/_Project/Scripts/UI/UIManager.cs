@@ -3,11 +3,10 @@ using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
+    // UI referements
     public GameObject pauseMenu;
-
     public GameObject gameOver;
     public GameObject menuGameOver;
-
     public GameObject WinnerBanner;
     public GameObject menuWinner;
 

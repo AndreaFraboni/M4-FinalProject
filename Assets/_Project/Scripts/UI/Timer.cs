@@ -1,11 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
+using TMPro;
 
 public class Timer : MonoBehaviour
 {
-    [SerializeField] private float _countDown = 600f; // Durata del timer in secondi = 10 minuti
+    [Header("TIMER SETTINGS")]
+    [SerializeField] private float _countDown = 600f; // Durata del timer in secondi 600f = 10 minuti
     [SerializeField] private float _currentTime;
     [SerializeField] private TextMeshProUGUI _currentTimetext;
     [SerializeField] private UIManager _UIManager;

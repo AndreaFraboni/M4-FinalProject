@@ -1,10 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class heart : MonoBehaviour
 {
-    [Header("HEART parameters")]
+    [Header("HEART BONUS parameters")]
     [SerializeField] private float _rotSpeed = 100f;
     [SerializeField] private int _value = 10;
 

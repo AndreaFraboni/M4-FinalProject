@@ -2,12 +2,9 @@ using UnityEngine;
 
 public class Mover : MonoBehaviour
 {
-    //[SerializeField] private float _rotationSpeed = 0.2f;
-
-    private float _speed;
     private Rigidbody _rb;
-
     private PlayerController _pc;
+    private float _speed;
 
     private Vector3 currentDirection;
 

@@ -5,6 +5,7 @@ public class CannonTower : MonoBehaviour
     [Header("Audio Manager")]
     [SerializeField] private AudioManager _audioManager;
 
+    [Header("Cannon Tower Parameters")]
     [SerializeField] private Transform _cannonBaseAim;
     [SerializeField] private Transform _firePoint;
     [SerializeField] private GameObject _projectilePrefab;

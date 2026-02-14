@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 
 public class UIEnemyLifeController : MonoBehaviour
 {
@@ -22,5 +21,4 @@ public class UIEnemyLifeController : MonoBehaviour
     {
         _lifeController.Defeated();
     }
-
 }

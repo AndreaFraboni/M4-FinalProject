@@ -1,7 +1,7 @@
-using TMPro;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.UI;
+using UnityEngine.Events;
+using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
@@ -26,15 +26,14 @@ public class PlayerController : MonoBehaviour
     [Header("OnCoinPickup Event")]
     [SerializeField] private UnityEvent<int> _onCoinPickup;
 
-    private Shooter _shooter;
-    private CapsuleCollider _capsuleCollider;
-    private Rigidbody _rb;
     private Mover _mover;
     private Rotator _rotator;
-    
+    private Rigidbody _rb;
+    private CapsuleCollider _capsuleCollider;
+
     private float horizontal, vertical = 0f;
     private Vector3 currentDirection = Vector3.zero;
-    
+
     private Camera _cam;
     private Ray _ray;
 
@@ -61,7 +60,6 @@ public class PlayerController : MonoBehaviour
         if (_audioManager == null) _audioManager = FindAnyObjectByType<AudioManager>();
         if (_UIManager == null) _UIManager = FindAnyObjectByType<UIManager>();
         if (_playerAnimation == null) _playerAnimation = GetComponentInParent<PlayerAnimation>();
-        if (_shooter == null) _shooter = GetComponent<Shooter>();
         if (_capsuleCollider == null) _capsuleCollider = GetComponent<CapsuleCollider>();
         _cam = Camera.main;
     }
@@ -151,7 +149,6 @@ public class PlayerController : MonoBehaviour
         if (!isAlive) return;
         if (isFiring) return;
 
-        // se non stai davvero muovendo, non ruotare
         if (currentDirection.sqrMagnitude < 0.0004f) return;
 
         if (_rotator != null) _rotator.SetRotation(currentDirection);
@@ -181,7 +178,6 @@ public class PlayerController : MonoBehaviour
     public void DestroyGOPlayer()
     {
         _UIManager.GameOver();
-
         Destroy(gameObject);
     }
 
@@ -194,7 +190,7 @@ public class PlayerController : MonoBehaviour
         _lifeText.text = hp + "/" + maxhp;
         _bar_lifeBarFillable.fillAmount = (float)hp / maxhp;
     }
-    
+
     private void StartDeathAnimation()
     {
         if (_deathStarted) return;

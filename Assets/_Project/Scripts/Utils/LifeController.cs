@@ -2,15 +2,18 @@ using UnityEngine;
 using UnityEngine.Events;
 public class LifeController : MonoBehaviour
 {
-    [Header("Health Referements")]
+    [Header("Health Refs")]
     [SerializeField] private int _currenthp;
     [SerializeField] private int _maxHP = 100;
     [SerializeField] private bool _fullHPOnStart = true;
+
     [Header("Unity Event on Health Event")]
     [SerializeField] private UnityEvent<int, int> _onHPChanged;
     [SerializeField] private UnityEvent _onDefeated;
-    [Header("Player Referements")]
+
+    [Header("Player Refs")]
     [SerializeField] private PlayerController _pc;
+
     [Header("Audio Manager")]
     [SerializeField] private AudioManager _audioManager;
 

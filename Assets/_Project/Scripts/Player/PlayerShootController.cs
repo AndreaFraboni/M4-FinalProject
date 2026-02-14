@@ -1,12 +1,9 @@
-using TMPro;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class PlayerShootController : MonoBehaviour
 {
     [Header("Bullet Settings")]
     [SerializeField] private MagicSphere _magicSphere;
-    //[SerializeField] private float _impulseForce = 50f;
     [SerializeField] private float _fireInterval = 0.5f;
     [SerializeField] private GameObject _firePoint;
 
@@ -19,15 +16,19 @@ public class PlayerShootController : MonoBehaviour
     [Header("Ref To UI Manager")]
     [SerializeField] private UIManager _uiManager;
 
-    private Animator _anim;
     private PlayerController _pc;
-    private float _lastShootTime;
+    private Rotator _rotator;
+    private Animator _anim;
+
+    // Gizmos data
     private Camera _cam;
     private Ray _ray;
     private float _hitPointRadius = 0.15f;
-    private Rotator _rotator;
 
     private Vector3 _direction;
+
+    private float _lastShootTime;
+
 
     private void Awake()
     {
@@ -42,7 +43,6 @@ public class PlayerShootController : MonoBehaviour
     void OnDrawGizmos()
     {
         if (_cam == null) return;
-
         Gizmos.color = Color.red;
         //Gizmos.DrawRay(_ray.origin, _ray.direction * _maxDistance);
         Gizmos.DrawRay(_firePoint.transform.position, _ray.direction * _maxDistance);
@@ -102,7 +102,5 @@ public class PlayerShootController : MonoBehaviour
     {
         return Time.time - _lastShootTime > _fireInterval;
     }
-
-
 }
 

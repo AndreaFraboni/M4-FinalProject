@@ -92,5 +92,4 @@ public class AudioManager : MonoBehaviour
         if (musicSource.isPlaying) musicSource.Stop();
         if (sfxSource.isPlaying) sfxSource.Stop();
     }
-
 }

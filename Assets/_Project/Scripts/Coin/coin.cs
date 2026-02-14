@@ -1,10 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Coin : MonoBehaviour
 {
-    [Header("COIN object 3D")]
+    [Header("COIN object 3D Parameters")]
     [SerializeField] private float _coinRotSpeed = 100f;
     [SerializeField] private int _coinValue = 10;
 

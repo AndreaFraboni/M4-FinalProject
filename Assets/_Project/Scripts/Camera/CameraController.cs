@@ -1,28 +1,21 @@
-using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
     [SerializeField] Transform _target;
-
     [SerializeField] float _mouseSensitivity = 5f;
-
     [SerializeField] float bottomClamp = -20f;
     [SerializeField] float topClamp = 60f;
-
     [SerializeField] float _maxZoomDistance = 10f;
     [SerializeField] float _minZoomDistance = 2f;
-    private float orbitRadius = 5f;
-
     [SerializeField] Vector3 offset = new Vector3(0, 2, -5);
-
     [SerializeField] private float _startYaw = 0f;
     [SerializeField] private float _startPitch = 0f;
-
     [SerializeField] private float _sphereRadius = 0.2f;
     [SerializeField] private float _minOffestFromWall = 0.1f;
     [SerializeField] private LayerMask _groundMask;
+
+    private float orbitRadius = 5f;
 
     private Vector3 lookAt;
 
