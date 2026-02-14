@@ -29,7 +29,6 @@ public class PlayerShootController : MonoBehaviour
 
     private float _lastShootTime;
 
-
     private void Awake()
     {
         if (_cam == null) _cam = Camera.main;

@@ -23,7 +23,10 @@ public class heart : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (!other.TryGetComponent<LifeController>(out LifeController life)) return;
-        life.AddHp(_value);
-        Destroy(gameObject);
-    }
+        if (other.CompareTag(Tags.Player))
+        {
+            life.AddHp(_value);
+            Destroy(gameObject);
+        }
+        }
 }
