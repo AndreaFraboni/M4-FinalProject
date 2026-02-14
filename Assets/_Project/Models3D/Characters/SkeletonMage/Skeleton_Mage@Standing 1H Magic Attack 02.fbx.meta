@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: ed0f3536938170d44b9a977be55f6089
+guid: 883b1c17c1acec44c820abab81aaf405
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -36,7 +36,7 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: MagicAttack
+      name: Skeleton_Mage@MagicAttack01
       takeName: mixamo.com
       internalID: -203655887218126122
       firstFrame: 0
@@ -49,17 +49,25 @@ ModelImporter:
       hasAdditiveReferencePose: 0
       loopTime: 0
       loopBlend: 0
-      loopBlendOrientation: 0
+      loopBlendOrientation: 1
       loopBlendPositionY: 1
       loopBlendPositionXZ: 1
-      keepOriginalOrientation: 0
+      keepOriginalOrientation: 1
       keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
+      keepOriginalPositionXZ: 1
       heightFromFeet: 0
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0.4736077
+        functionName: AE_Shoot
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 211f0eab87cfbd245b6e6bb3b5fa608e,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
