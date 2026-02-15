@@ -547,7 +547,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 41.75
+  m_fontSize: 72
   m_fontSizeBase: 100
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -820,13 +820,15 @@ MonoBehaviour:
     >
     MOVE LEFT - A
 
-    > TURN RIGHT/LEFT - MOUSE + HOLD RIGHT MOUSE BUTTON
+    > JUMP - SPACEBAR
 
-    >
-    CAMERA ORBIT - MOUSE + HOLD RIGHT MOUSE BUTTON
+    > TURN RIGHT/LEFT - MOUSE + HOLD RIGHT
+    MOUSE BUTTON
 
-    > FIRE - LEFT MOUSE BUTTON
-    IN THE DIRECTION YOU CLICKED
+    > CAMERA ORBIT - MOUSE + HOLD RIGHT MOUSE BUTTON
+
+    > FIRE
+    - LEFT MOUSE BUTTON IN THE DIRECTION YOU CLICKED
 
 '
   m_isRightToLeft: 0
@@ -855,7 +857,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 47.55
+  m_fontSize: 66.4
   m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1224,7 +1226,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 47.3
+  m_fontSize: 72
   m_fontSizeBase: 100
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1555,7 +1557,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 44.7
+  m_fontSize: 72
   m_fontSizeBase: 100
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -6517,7 +6519,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 47.3
+  m_fontSize: 72
   m_fontSizeBase: 100
   m_fontWeight: 400
   m_enableAutoSizing: 1
