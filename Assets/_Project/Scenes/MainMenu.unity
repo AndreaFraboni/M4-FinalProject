@@ -827,8 +827,11 @@ MonoBehaviour:
 
     > CAMERA ORBIT - MOUSE + HOLD RIGHT MOUSE BUTTON
 
-    > FIRE
-    - LEFT MOUSE BUTTON IN THE DIRECTION YOU CLICKED
+    > ZOOM
+    IN/OUT - MOUSE SCROLL WHELL
+
+    > FIRE - LEFT MOUSE BUTTON IN THE DIRECTION
+    YOU CLICKED
 
 '
   m_isRightToLeft: 0
@@ -2014,7 +2017,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 71.05
+  m_fontSize: 72
   m_fontSizeBase: 100
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2404,7 +2407,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 69.75
+  m_fontSize: 72
   m_fontSizeBase: 100
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2909,7 +2912,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 69.95
+  m_fontSize: 72
   m_fontSizeBase: 100
   m_fontWeight: 400
   m_enableAutoSizing: 1

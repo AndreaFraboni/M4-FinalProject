@@ -33506,6 +33506,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3839573060389539831, guid: 60ef165f58966de43a771282b8f3b9ff,
+        type: 3}
+      propertyPath: m_text
+      value: Moving by WASD and Space Bar to jump - use right mouse button for orbit
+        around the player. use left mouse button to fire magic ball. Zoom In and
+        Out with Mouse Scroll Wheel.
+      objectReference: {fileID: 0}
+    - target: {fileID: 3839573060389539831, guid: 60ef165f58966de43a771282b8f3b9ff,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 70.95
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
